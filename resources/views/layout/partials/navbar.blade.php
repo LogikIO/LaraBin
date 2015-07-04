@@ -14,6 +14,14 @@
                 @if(auth()->check())
                     <li class="{{ Menu::isActiveRoute('bins.my') }}"><a href="{{ route('bins.my') }}">My Bins</a></li>
                     <li class="{{ Menu::isActiveRoute('bins.create') }}"><a href="{{ route('bins.create') }}">Create Bin +</a></li>
+                    @if(auth()->user()->admin())
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ route('admin.users') }}">Users</a></li>
+                            </ul>
+                        </li>
+                    @endif
                 @endif
             </ul>
 

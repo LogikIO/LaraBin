@@ -44,6 +44,16 @@ class AppMailer
         $this->deliver();
     }
 
+    public function sendManualActivationEmailTo(User $user)
+    {
+        $this->to = $user->email;
+        $this->view = 'emails.auth.confirm-manual';
+        $this->subject = 'LaraBin.com - Account manually activated!';
+        $this->data = ['name' => $user->name];
+
+        $this->deliver();
+    }
+
     public function deliver()
     {
         $this->mailer->send($this->view, $this->data, function($message) {

@@ -23,7 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['middleware' => 'admin', 'as' => 'admin.', 'prefix' => 'admin'], function () {
-        //Route::get('/', ['as' => 'dashboard', 'uses' => '']);
+        Route::get('users', ['as' => 'users', 'uses' => 'Admin\UserController@index']);
+        Route::get('users/{id}/edit', ['as' => 'users.edit', 'uses' => 'Admin\UserController@edit']);
+        Route::post('users/{id}/edit', ['uses' => 'Admin\UserController@editPost']);
+        Route::post('users/activate', ['as' => 'users.activate', 'uses' => 'Admin\UserController@activate']);
     });
 
 });
@@ -42,10 +45,6 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('login/reset/confirm/{token}', ['as' => 'reset.confirm', 'uses' => 'Auth\AuthController@confirm']);
     Route::post('login/reset/confirm/{token}', ['uses' => 'Auth\AuthController@confirmPost']);
 
-});
-
-get('test', function(){
-   dd(auth()->user()->settings());
 });
 
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
