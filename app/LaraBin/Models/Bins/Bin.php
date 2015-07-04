@@ -8,6 +8,8 @@ class Bin extends Model
 {
     protected $table = 'bins';
 
+    protected $with = ['versions'];
+
     protected $fillable = ['user_id', 'title', 'description', 'visibility', 'version_id'];
 
     public function user()
