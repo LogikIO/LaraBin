@@ -77,7 +77,7 @@ class Bin extends Model
     public function versions_label()
     {
         $html = '';
-        $versions = $this->versions->lists('name')->all();
+        $versions = $this->versions->lists('name')->all()->orderBy('name', 'ASC');
         foreach($versions as $version) {
             $html .= '<span class ="label label-versions">' . $version . '</span>';
         }
