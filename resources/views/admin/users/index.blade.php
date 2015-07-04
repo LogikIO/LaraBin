@@ -14,6 +14,7 @@ form.activate {
     float: left;
     margin-right: 6px;
 }
+span.github{margin-right:6px}
 @stop
 
 @section('customjsfiles')
@@ -43,7 +44,7 @@ form.activate {
                     <tr class="{{ (!$user->verified()) ? 'danger' : '' }}">
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
-                        <td>{!! ($user->usingGithub()) ? '<i class="fa fa-github"></i>' : '' !!}<a href="{{ $user->url() }}">{{ $user->username }}</a></td>
+                        <td>{!! ($user->usingGithub()) ? '<span class="github"><i class="fa fa-github"></i></span>' : '' !!}<a href="{{ $user->url() }}">{{ $user->username }}</a></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>
