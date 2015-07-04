@@ -35,7 +35,7 @@ class RegistrationController extends Controller
 
         $mailer->sendEmailConfirmationTo($user);
 
-        session()->flash('success', 'Account created successfully! You must verify your email!');
+        session()->flash('success', 'Account created successfully! You must verify your email!<br>May take up to 15 minutes. Be sure to check SPAM folder!');
 
         return redirect()->route('home');
     }
@@ -96,7 +96,7 @@ class RegistrationController extends Controller
 
         $mailer->sendEmailConfirmationTo($confirmation->user);
 
-        session()->flash('success', 'Email confirmation has been resent!');
+        session()->flash('success', 'Email confirmation has been resent!<br>May take up to 15 minutes. Be sure to check SPAM folder!');
 
         return redirect()->route('home');
     }
