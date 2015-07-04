@@ -24,7 +24,7 @@ class Bin extends Model
 
     public function versions()
     {
-        return $this->belongsToMany('\App\LaraBin\Models\Bins\Version');
+        return $this->belongsToMany('\App\LaraBin\Models\Bins\Version')->orderBy('name');
     }
 
     // Methods
@@ -77,7 +77,7 @@ class Bin extends Model
     public function versions_label()
     {
         $html = '';
-        $versions = $this->versions->lists('name')->all()->orderBy('name', 'ASC');
+        $versions = $this->versions->lists('name')->all();
         foreach($versions as $version) {
             $html .= '<span class ="label label-versions">' . $version . '</span>';
         }
