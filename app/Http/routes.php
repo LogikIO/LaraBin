@@ -46,8 +46,8 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
 
-Route::get('bins/{version?}', ['as' => 'bins.all', 'uses' => 'Bins\BinController@all']);
 Route::get('bins/recent/{version?}', ['as' => 'bins.recent', 'uses' => 'Bins\BinController@allRecent']);
+Route::get('bins/{version?}', ['as' => 'bins.all', 'uses' => 'Bins\BinController@all']);
 Route::get('{bin}', ['as' => 'bin', 'uses' => 'Bins\BinController@show', 'middleware' => 'bin.view']);
 Route::get('{bin}/edit', ['as' => 'bin.edit', 'uses' => 'Bins\BinController@edit', 'middleware' => ['auth', 'bin.manage']]);
 Route::post('{bin}/edit', ['uses' => 'Bins\BinController@editPost', 'middleware' => ['auth', 'bin.manage']]);

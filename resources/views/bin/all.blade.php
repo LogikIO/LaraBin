@@ -25,7 +25,7 @@ p.sort a{margin-right:6px}
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
             @if($bins->count())
-                <p class="sort"><a href="{{ route('bins.all') }}" class="{{ ($active == 'latest') ? 'btn-primary' : 'btn-info' }} btn btn-xs">Latest</a><a href="{{ route('bins.all', 'recent') }}" class="{{ ($active == 'recent') ? 'btn-primary' : 'btn-info' }} btn btn-xs">Recently Updated</a></p>
+                <p class="sort"><a href="{{ route('bins.all') }}" class="{{ ($active == 'latest') ? 'btn-primary' : 'btn-info' }} btn btn-xs">Latest</a><a href="{{ route('bins.recent') }}" class="{{ ($active == 'recent') ? 'btn-primary' : 'btn-info' }} btn btn-xs">Recently Updated</a></p>
                 @foreach($bins as $bin)
                     <div class="bin-details panel panel-default">
                         <div class="panel-heading">
