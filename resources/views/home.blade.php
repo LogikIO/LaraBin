@@ -51,5 +51,48 @@
         <p>Create an account and paste away! :)</p>
         <p><a class="btn btn-sm btn-social btn-twitter" href="https://twitter.com/larabincom"><i class="fa fa-twitter"></i>Follow us on Twitter!</a></p>
     </div>
+
+    <div class="col-xs-8 col-xs-offset-2" style="margin-top:20px;">
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+
+                <div class="panel status panel-danger">
+                    <div class="panel-heading">
+                        <h1 class="panel-title text-center">{{ $artisans }}</h1>
+                    </div>
+                    <div class="panel-body text-center">
+                        <strong>Artisans</strong>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-6 col-md-4">
+
+                <div class="panel status panel-warning">
+                    <div class="panel-heading">
+                        <h1 class="panel-title text-center">{{ $bins }}</h1>
+                    </div>
+                    <div class="panel-body text-center">
+                        <strong>Bins</strong>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-6 col-md-4">
+
+                <div class="panel status panel-success">
+                    <div class="panel-heading">
+                        <h1 class="panel-title text-center">{{ $files }}</h1>
+                    </div>
+                    <div class="panel-body text-center">
+                        <strong>Files</strong>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
 </div>
 @stop

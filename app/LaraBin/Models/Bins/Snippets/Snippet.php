@@ -69,5 +69,10 @@ class Snippet extends Model
     }
 
     // Scopes
-
+    public function scopePublicOnly($query)
+    {
+        $query->whereHas('bin', function($q) {
+            $q->where('visibility', 1);
+        });
+    }
 }

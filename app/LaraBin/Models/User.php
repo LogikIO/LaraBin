@@ -90,7 +90,7 @@ class User extends Model implements AuthenticatableContract
      *
      * @param $query
      */
-    public function scopeVerified($query)
+    public function scopeVerifiedOnly($query)
     {
         $query->where('verified', true);
     }

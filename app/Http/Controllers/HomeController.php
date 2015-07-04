@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\LaraBin\Models\Bins\Bin;
+use App\LaraBin\Models\Bins\Snippets\Snippet;
+use App\LaraBin\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,6 +30,9 @@ class Idea extends Eloquent {
      }
 
 }';
-        return view('home', compact('sample'));
+        $artisans = User::verifiedOnly()->count();
+        $bins = Bin::publicOnly()->count();
+        $files = Snippet::publicOnly()->count();
+        return view('home', compact('sample', 'artisans', 'bins', 'files'));
     }
 }
