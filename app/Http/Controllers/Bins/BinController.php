@@ -7,6 +7,7 @@ use App\LaraBin\Models\Bins\Bin;
 use App\LaraBin\Models\Bins\Snippets\Snippet;
 use App\LaraBin\Models\Bins\Snippets\Type;
 use Illuminate\Http\Request;
+use Twitter;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -31,6 +32,11 @@ class BinController extends Controller
             'description' => $description,
             'visibility' => $request->input('visibility')
         ]);
+
+        if ($bin->isPublic()) {
+            $status = 'Bin: #laravel ' . $bin->url() . ' ' . $bin->title;
+            Twitter::postTweet(['status' => str_limit($status, 135), 'format' => 'json']);
+        }
 
         $bin->versions()->sync($request->input('versions'));
 

@@ -152,6 +152,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Thujohn\Twitter\TwitterServiceProvider::class,
 
     ],
 
@@ -212,6 +213,7 @@ return [
         'Socialite'     => Laravel\Socialite\Facades\Socialite::class,
         'Debugbar'      => Barryvdh\Debugbar\Facade::class,
         'Recaptcha'     => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Twitter'       => Thujohn\Twitter\Facades\Twitter::class,
 
     ],
 

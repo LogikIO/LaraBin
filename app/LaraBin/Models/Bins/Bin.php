@@ -60,6 +60,11 @@ class Bin extends Model
         return ($this->visibility == 0) ? true : false;
     }
 
+    public function isPublic()
+    {
+        return ($this->visibility == 1) ? true : false;
+    }
+
     public function label()
     {
         switch ($this->visibility) {
