@@ -2,7 +2,7 @@
 
 @section('title')
     @parent
-    :: {{ $user->name }}'s Profile
+    :: {{ $user->username }}'s Profile
 @stop
 
 @section('customcssfiles')
