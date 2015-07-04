@@ -47,7 +47,7 @@
     </div>
     <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3" style="text-align: center;">
         <h3>Welcome to LaraBin!</h3>
-        <p>LaraBin is a code bin repository specifically dedicated to <a href="http://laravel.com">Laravel</a> code.</p>
+        <p>LaraBin is a code snippet repository specifically dedicated to <a href="http://laravel.com">Laravel</a> code.</p>
         <p>Create an account and paste away! :)</p>
         <p><a class="btn btn-sm btn-social btn-twitter" href="https://twitter.com/larabincom"><i class="fa fa-twitter"></i>Follow us on Twitter!</a></p>
     </div>
