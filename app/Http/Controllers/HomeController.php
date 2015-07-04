@@ -17,7 +17,8 @@ class HomeController extends Controller
         $sample = '<?php
 
 
-class Idea extends Eloquent {
+class Idea extends Eloquent
+{
 
     /**
      * Dreaming of something more?
