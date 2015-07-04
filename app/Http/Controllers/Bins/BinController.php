@@ -220,4 +220,12 @@ class BinController extends Controller
     {
         return view('bin.delete', compact('bin'));
     }
+
+    public function deletePost(Bin $bin, Requests\Bins\DeleteBin $request)
+    {
+        $bin->delete();
+        session()->flash('success', 'Your bin has been deleted!');
+
+        return redirect()->route('bins.my');
+    }
 }

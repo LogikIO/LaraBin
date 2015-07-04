@@ -55,4 +55,5 @@ Route::get('{bin}', ['as' => 'bin', 'uses' => 'Bins\BinController@show', 'middle
 Route::get('{bin}/edit', ['as' => 'bin.edit', 'uses' => 'Bins\BinController@edit', 'middleware' => ['auth', 'bin.manage']]);
 Route::post('{bin}/edit', ['uses' => 'Bins\BinController@editPost', 'middleware' => ['auth', 'bin.manage']]);
 Route::get('{bin}/delete', ['as' => 'bin.delete', 'uses' => 'Bins\BinController@delete', 'middleware' => ['auth', 'bin.manage']]);
+Route::post('{bin}/delete', ['uses' => 'Bins\BinController@deletePost', 'middleware' => ['auth', 'bin.manage']]);
 Route::get('{bin}/{snippet}', ['as' => 'bin.snippet', 'uses' => 'Bins\BinController@showSnippet', 'middleware' => 'bin.view']);
