@@ -29,3 +29,9 @@ function binVisibility() {
         2 => 'Unlisted'
     ];
 }
+
+function settings($key = null)
+{
+    $settings = app('App\LaraBin\Helpers\Settings');
+    return $key ? $settings->get($key) : $settings;
+}

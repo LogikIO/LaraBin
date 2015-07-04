@@ -2,6 +2,7 @@
 
 namespace App\LaraBin\Models;
 
+use App\LaraBin\Helpers\Settings;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -16,10 +17,15 @@ class User extends Model implements AuthenticatableContract
     protected $fillable = [
         'name', 'username', 'email',
         'password', 'verified', 'github_token',
-        'github_avatar', 'website', 'github_username'
+        'github_avatar',
+        'settings'
     ];
 
     protected $hidden = ['password', 'remember_token'];
+
+    protected $casts = [
+        'settings' => 'array'
+    ];
 
     public function passwordReset()
     {
@@ -42,6 +48,11 @@ class User extends Model implements AuthenticatableContract
     }
 
     // Methods
+
+    public function settings()
+    {
+        return new Settings($this->settings, $this);
+    }
 
     /**
      * Check if user has verified their email address

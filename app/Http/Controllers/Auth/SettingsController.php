@@ -36,17 +36,23 @@ class SettingsController extends Controller
 
         $website = ($request->has('website') && trim($request->input('website')) != '') ? $request->input('website') : null;
         $github_username = ($request->has('github_username') && trim($request->input('github_username')) != '') ? $request->input('github_username') : null;
+        $twitter_username = ($request->has('twitter_username') && trim($request->input('twitter_username')) != '') ? $request->input('twitter_username') : null;
 
         $user = User::find(auth()->user()->getAuthIdentifier());
         $user->name = $request->input('name');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
-        $user->website = $website;
-        $user->github_username = $github_username;
         if ($request->has('new_password')) {
             $user->password = bcrypt($request->input('new_password'));
         }
         $user->save();
+
+        settings()->setMany([
+            'website' => $website,
+            'github_username' => $github_username,
+            'twitter_username' => $twitter_username
+        ]);
+
         session()->flash('success', 'Account updated successfully!');
 
         return redirect()->back();

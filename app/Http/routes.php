@@ -44,6 +44,10 @@ Route::group(['middleware' => 'guest'], function () {
 
 });
 
+get('test', function(){
+   dd(auth()->user()->settings());
+});
+
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
 
 Route::get('bins/recent/{version?}', ['as' => 'bins.recent', 'uses' => 'Bins\BinController@allRecent']);

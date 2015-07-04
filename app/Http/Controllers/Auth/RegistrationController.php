@@ -22,8 +22,10 @@ class RegistrationController extends Controller
     {
         $user = User::create([
             'username' => $request->input('username'),
+            'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password'))
+            'password' => bcrypt($request->input('password')),
+            'settings' => []
         ]);
 
         $user->emailVerification()->create([

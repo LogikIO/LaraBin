@@ -79,7 +79,7 @@
                 <div class="form-group @if ($errors->has('website')) has-error @endif">
                     <div class="col-md-12">
                         <label class="control-label">Website</label><small> (not required)</small>
-                        {!! Form::text('website', auth()->user()->website, ['class' => 'form-control', 'placeholder' => 'Website']) !!}
+                        {!! Form::text('website', settings('website'), ['class' => 'form-control', 'placeholder' => 'Website']) !!}
                         @if ($errors->has('website'))
                             <span class="help-block">{{ $errors->first('website') }}</span>
                         @endif
@@ -89,9 +89,19 @@
                 <div class="form-group @if ($errors->has('github_username')) has-error @endif">
                     <div class="col-md-12">
                         <label class="control-label">GitHub Username</label><small> (not required) So we can link to your profile!</small>
-                        {!! Form::text('github_username', auth()->user()->github_username, ['class' => 'form-control', 'placeholder' => 'GitHub Username']) !!}
+                        {!! Form::text('github_username', settings('github_username'), ['class' => 'form-control', 'placeholder' => 'GitHub Username']) !!}
                         @if ($errors->has('github_username'))
                             <span class="help-block">{{ $errors->first('github_username') }}</span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group @if ($errors->has('twitter_username')) has-error @endif">
+                    <div class="col-md-12">
+                        <label class="control-label">Twitter Username</label><small> (not required) So we can link to your profile!</small>
+                        {!! Form::text('twitter_username', settings('twitter_username'), ['class' => 'form-control', 'placeholder' => 'Twitter Username']) !!}
+                        @if ($errors->has('twitter_username'))
+                            <span class="help-block">{{ $errors->first('twitter_username') }}</span>
                         @endif
                     </div>
                 </div>

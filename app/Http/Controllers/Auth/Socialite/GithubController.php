@@ -45,7 +45,8 @@ class GithubController extends Controller
                     'name' => $user->getName(),
                     'username' => $username,
                     'email' => $email,
-                    'verified' => true
+                    'verified' => true,
+                    'settings' => []
                 ]);
 
                 auth()->login($newUser);

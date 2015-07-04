@@ -49,18 +49,25 @@
                 <!-- SIDEBAR MENU -->
                 <div class="profile-usermenu">
                     <ul class="nav">
-                        @if($user->website)
+                        @if($user->settings()->get('website'))
                             <li>
-                                <a href="{{ $user->website }}">
+                                <a href="{{ $user->settings()->get('website') }}">
                                     <i class="fa fa-globe"></i>
                                     Website</a>
                             </li>
                         @endif
-                        @if($user->github_username)
+                        @if($user->settings()->get('github_username'))
                             <li>
-                                <a href="https://github.com/{{ $user->github_username }}">
+                                <a href="https://github.com/{{ $user->settings()->get('github_username') }}">
                                     <i class="fa fa-github"></i>
                                     GitHub Profile</a>
+                            </li>
+                        @endif
+                        @if($user->settings()->get('twitter_username'))
+                            <li>
+                                <a href="https://twitter.com/{{ $user->settings()->get('twitter_username') }}">
+                                    <i class="fa fa-twitter"></i>
+                                    Twitter Profile</a>
                             </li>
                         @endif
                     </ul>
