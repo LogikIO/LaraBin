@@ -29,7 +29,7 @@
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1 browser-container">
 
-        <h1>Laravel code bin repository.</h1>
+        <h1>Laravel code snippet repository.</h1>
 
         <div class="browser-window">
             <div class="top-bar">

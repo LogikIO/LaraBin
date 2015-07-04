@@ -25,21 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/user/show.blade.php">
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="1887">
-              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layout/partials/footer.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5831904" vertical-offset="0" max-vertical-offset="583">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.18070175" vertical-offset="424" max-vertical-offset="1020">
+              <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -88,7 +78,6 @@
         <option value="$PROJECT_DIR$/public/js/home.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/public/css/home.css" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2015_06_29_233530_create_users_table.php" />
         <option value="$PROJECT_DIR$/app/LaraBin/Models/User.php" />
         <option value="$PROJECT_DIR$/resources/views/user/settings.blade.php" />
@@ -101,6 +90,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Bins/BinController.php" />
         <option value="$PROJECT_DIR$/resources/views/user/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layout/partials/footer.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
       </list>
     </option>
   </component>
@@ -1182,13 +1172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Bins/CreateBin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/bin/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23859648" vertical-offset="0" max-vertical-offset="1377">
@@ -1313,13 +1296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.423077" vertical-offset="450" max-vertical-offset="1020">
-          <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/user/settings.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5824561" vertical-offset="1249" max-vertical-offset="2635">
@@ -1405,7 +1381,7 @@
         <state vertical-scroll-proportion="-7.5384617" vertical-offset="348" max-vertical-offset="1530">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
           <folding>
-            <element signature="e#923#944#0#HTML" expanded="true" />
+            <element signature="e#923#944#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1466,10 +1442,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/user/show.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Bins/CreateBin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="1887">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1478,6 +1454,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5831904" vertical-offset="0" max-vertical-offset="583">
           <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/user/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11929824" vertical-offset="0" max-vertical-offset="1887">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18070175" vertical-offset="424" max-vertical-offset="1020">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
           <folding />
         </state>
       </provider>
