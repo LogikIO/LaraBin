@@ -101,4 +101,11 @@ class Bin extends Model
     {
         $query->where('visibility', 1);
     }
+
+    public function scopeVersion($query, $versions)
+    {
+        $query->whereHas('versions', function($q) use ($versions) {
+            $q->where('name', $versions);
+        });
+    }
 }

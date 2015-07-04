@@ -189,14 +189,25 @@ class BinController extends Controller
         return redirect()->route('bin', $bin->getRouteKey());
     }
 
-    public function all($recent = null)
+    public function all($version = null)
     {
-        if ($recent && $recent == 'recent') {
-            $active = 'recent';
-            $bins = Bin::publicOnly()->with(['snippets','user'])->orderBy('updated_at', 'DESC')->paginate(10);
+        $active = 'latest';
+        if ($version) {
+            $bins = Bin::publicOnly()->version($version)->with(['snippets','user'])->latest()->paginate(10);
         } else {
-            $active = 'latest';
-            $bins = Bin::publicOnly()->with(['snippets','user'])->latest()->paginate(10);
+            $bins = Bin::publicOnly()->with(['snippets', 'user'])->latest()->paginate(10);
+        }
+
+        return view('bin.all', compact('bins', 'active'));
+    }
+
+    public function allRecent($version = null)
+    {
+        $active = 'recent';
+        if ($version) {
+            $bins = Bin::publicOnly()->version($version)->with(['snippets','user'])->orderBy('updated_at', 'DESC')->paginate(10);
+        } else {
+            $bins = Bin::publicOnly()->with(['snippets', 'user'])->orderBy('updated_at', 'DESC')->paginate(10);
         }
 
         return view('bin.all', compact('bins', 'active'));
