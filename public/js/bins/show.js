@@ -4,3 +4,9 @@ $(document).ready(function() {
         hljs.lineNumbersBlock(block);
     });
 });
+
+$(document).ready(function() {
+    $('.markrender pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+});
