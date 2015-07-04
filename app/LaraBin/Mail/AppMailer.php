@@ -34,6 +34,16 @@ class AppMailer
         $this->deliver();
     }
 
+    public function sendPasswordResetTo(User $user)
+    {
+        $this->to = $user->email;
+        $this->view = 'emails.auth.password';
+        $this->subject = 'LaraBin.com - Reset Account Password';
+        $this->data = ['token' => $user->passwordReset->token];
+
+        $this->deliver();
+    }
+
     public function deliver()
     {
         $this->mailer->send($this->view, $this->data, function($message) {

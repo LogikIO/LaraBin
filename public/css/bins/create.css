@@ -1,0 +1,24 @@
+.ace_editor {
+    position: relative !important;
+    border: 1px solid lightgray;
+    margin: auto;
+    height: 250px;
+    width: 90%;
+}
+
+.editor-instance {
+    border-left: 4px solid #18bc9c;
+    margin-bottom: 15px;
+}
+
+.delete-file { margin: 15px 0; }
+
+#editor-template{display:none}
+
+#errors {
+    display: none;
+    background: #e74c3c;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold
+}

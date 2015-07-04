@@ -44,7 +44,7 @@ class RegistrationController extends Controller
         if (!$token || $token->expired()) {
             session()->flash('error', 'Token does not exist or has expired!');
 
-            return redirect()->route('home');
+            return redirect()->route('resend.email');
         }
 
         $token->user()->update([
@@ -55,5 +55,47 @@ class RegistrationController extends Controller
 
         session()->flash('success', 'Email verified! You may now login!');
         return redirect()->route('login');
+    }
+
+    public function resend()
+    {
+        return view('auth.resend-email');
+    }
+
+    public function resendPost(Requests\Auth\ResendEmailConfirmation $request, AppMailer $mailer)
+    {
+        $email = $request->input('email');
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            session()->flash('error', 'No account found with that email!');
+
+            return redirect()->back()->withInput();
+        }
+
+        if ($user->verified()) {
+            session()->flash('error', 'Your account is already confirmed! No need for confirmation.');
+
+            return redirect()->route('login');
+        }
+
+        if ($user->emailVerification->created_at > Carbon::now()->subSeconds(2)) {
+            session()->flash('error', 'You must wait ' . $user->emailVerification->created_at->addMinutes(15)->diffForHumans() . ' before requesting a new confirmation!');
+
+            return redirect()->back()->withInput();
+        }
+
+        $user->emailVerification->delete();
+
+        $confirmation = $user->emailVerification()->create([
+            'token' => str_random(30),
+            'created_at' => Carbon::now()
+        ]);
+
+        $mailer->sendEmailConfirmationTo($confirmation->user);
+
+        session()->flash('success', 'Email confirmation has been resent!');
+
+        return redirect()->route('home');
     }
 }

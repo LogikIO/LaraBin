@@ -1,0 +1,1 @@
+<pre><code>{{ $snippet->code }}</code></pre>

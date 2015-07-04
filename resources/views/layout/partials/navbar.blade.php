@@ -10,7 +10,11 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-
+                <li class="{{ Menu::isActiveRoute('bins.all') }}"><a href="{{ route('bins.all') }}">All Bins</a></li>
+                @if(auth()->check())
+                    <li class="{{ Menu::isActiveRoute('bins.my') }}"><a href="{{ route('bins.my') }}">My Bins</a></li>
+                    <li class="{{ Menu::isActiveRoute('bins.create') }}"><a href="{{ route('bins.create') }}">Create Bin +</a></li>
+                @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -20,7 +24,8 @@
                             {{ auth()->user()->username }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Settings</a></li>
+                            <li><a href="{{ route('user', auth()->user()->username) }}">Profile</a></li>
+                            <li><a href="{{ route('settings') }}">Settings</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ route('logout') }}">Logout</a></li>
                         </ul>

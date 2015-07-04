@@ -7,7 +7,13 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "illuminate/html": "5.0.*"
+        "illuminate/html": "5.0.*",
+        "hashids/hashids": "^1.0",
+        "thomaswelton/laravel-gravatar": "~1.0",
+        "laravel/socialite": "^2.0",
+        "league/commonmark": "^0.9.0",
+        "barryvdh/laravel-debugbar": "^2.0",
+        "greggilbert/recaptcha": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

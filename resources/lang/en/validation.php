@@ -92,6 +92,8 @@ return [
         ],
     ],
 
+    'recaptcha' => 'The :attribute field is not correct.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

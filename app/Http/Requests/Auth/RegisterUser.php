@@ -24,9 +24,19 @@ class RegisterUser extends Request
     public function rules()
     {
         return [
-            'username' => 'required|min:4|unique:users,username',
+            'name' => 'required',
+            'username' => 'required|min:4|unique:users,username|regex:/\A[\w\-\.]+\z/',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'g-recaptcha-response' => 'required|recaptcha'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username.regex' => 'Only letters, numbers, dashes, underscores and periods.',
+            'g-recaptcha-response.required' => 'You must prove that you are human! :)'
         ];
     }
 }

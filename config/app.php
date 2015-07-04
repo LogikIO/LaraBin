@@ -148,6 +148,10 @@ return [
          * Custom Service Providers...
          */
         Illuminate\Html\HtmlServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
 
     ],
 
@@ -204,6 +208,10 @@ return [
         'Menu'          => App\LaraBin\Helpers\Menu::class,
         'Form'          => Illuminate\Html\FormFacade::class,
         'HTML'          => Illuminate\Html\HtmlFacade::class,
+        'Gravatar'      => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        'Socialite'     => Laravel\Socialite\Facades\Socialite::class,
+        'Debugbar'      => Barryvdh\Debugbar\Facade::class,
+        'Recaptcha'     => Greggilbert\Recaptcha\Facades\Recaptcha::class,
 
     ],
 

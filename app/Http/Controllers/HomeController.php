@@ -11,6 +11,22 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $sample = '<?php
+
+
+class Idea extends Eloquent {
+
+    /**
+     * Dreaming of something more?
+     *
+     * @with  Laravel
+     */
+     public function create()
+     {
+        // Have a fresh start...
+     }
+
+}';
+        return view('home', compact('sample'));
     }
 }

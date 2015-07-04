@@ -24,13 +24,13 @@ class EmailVerification extends Model
 
     /**
      * Check if user password reset token has expired
-     * Tokens expire 1 hour after creation
+     * Tokens expire 15 minutes after creation
      *
      * @return bool
      */
     public function expired()
     {
-        return ($this->created_at < Carbon::now()->subHour()) ? true : false;
+        return ($this->created_at < Carbon::now()->subMinutes(15)) ? true : false;
     }
 
     // Scopes

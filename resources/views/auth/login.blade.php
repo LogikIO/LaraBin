@@ -6,11 +6,13 @@
 @stop
 
 @section('customcssfiles')
-
+    {!! HTML::style('css/bootstrap-social.css') !!}
 @stop
 
 @section('customcss')
-
+    .btn-github {
+        padding:10px 15px 10px 61px;
+    }
 @stop
 
 @section('customjsfiles')
@@ -23,7 +25,12 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="margin-bottom:20px;">
+            <a href="{{ route('social.github') }}" class="btn btn-block btn-social btn-lg btn-github"><i class="fa fa-github"></i>Login with GitHub</a>
+        </div>
+
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
 
             <div class="well">
                 {!! Form::open(['route' => 'login', 'class' => 'form-horizontal']) !!}
@@ -61,7 +68,12 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-sm btn-success">Login</button>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-sm btn-success">Login</button>
+                            <a style="float:right;" href="{{ route('reset') }}" class="btn btn-sm btn-default">Reset Password</a>
+                        </div>
+                    </div>
 
                 </fieldset>
                 {!! Form::close() !!}
