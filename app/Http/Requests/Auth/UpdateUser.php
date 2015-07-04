@@ -25,7 +25,7 @@ class UpdateUser extends Request
     {
         return [
             'name' => 'required',
-            'username' => 'required|min:4|unique:users,username,'.auth()->user()->getAuthIdentifier().'|regex:/\A[\w\-\.]+\z/',
+            'username' => 'required|min:3|unique:users,username,'.auth()->user()->getAuthIdentifier().'|regex:/\A[\w\-\.]+\z/',
             'email' => 'required|email|unique:users,email,'.auth()->user()->getAuthIdentifier(),
             'new_password' => 'required_with:new_password_confirmation|confirmed|min:6',
             'new_password_confirmation' => 'required_with:new_password'

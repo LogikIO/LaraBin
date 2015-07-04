@@ -25,7 +25,7 @@ class RegisterUser extends Request
     {
         return [
             'name' => 'required',
-            'username' => 'required|min:4|unique:users,username|regex:/\A[\w\-\.]+\z/',
+            'username' => 'required|min:3|unique:users,username|regex:/\A[\w\-\.]+\z/',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|min:6',
             'g-recaptcha-response' => 'required|recaptcha'
