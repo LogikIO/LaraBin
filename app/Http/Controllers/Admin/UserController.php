@@ -13,21 +13,32 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::latest()->paginate(20);
+        $users = User::latest()->where('id', '!=', 1)->paginate(20);
 
         return view('admin.users.index', compact('users'));
     }
 
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::where('id', $id)->whereNotIn('id', [1])->first();
+        if (!$user) {
+            session()->flash('error', 'User not found!');
+
+            return redirect()->route('admin.users');
+        }
 
         return view('admin.users.edit', compact('user'));
     }
 
     public function editPost($id, Requests\Admin\UpdateUser $request)
     {
-        $user = User::find($id);
+        $user = User::where('id', $id)->whereNotIn('id', [1])->first();
+        if (!$user) {
+            session()->flash('error', 'User not found!');
+
+            return redirect()->route('admin.users');
+        }
+        
         $user->name = $request->input('name');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
