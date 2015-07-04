@@ -29,7 +29,7 @@ p.sort a{margin-right:6px}
                 @foreach($bins as $bin)
                     <div class="bin-details panel panel-default">
                         <div class="panel-heading">
-                            <a href="{{ $bin->user->url() }}">{{ $bin->user->username }}</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                            <small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->user->url() }}">{{ $bin->user->username }}</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="{{ $bin->url() }}">{{ $bin->title }}</a>
                         </div>
                         @if($bin->description)
                             <div class="panel-body" style="padding:15px;">

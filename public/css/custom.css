@@ -38,3 +38,6 @@ pre, code {
     background:#F7F7F7;
     border:0;
 }
+.label-versions{background:#f4645f;margin-right:3px;}
+.label-versions:last-of-type{margin-right:6px;}
+.label-visibility{margin-right:3px;}

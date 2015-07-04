@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Bins;
 
 use App\Http\Requests\Request;
+use App\LaraBin\Models\Bins\Version;
 
 class CreateBin extends Request
 {
@@ -16,6 +17,13 @@ class CreateBin extends Request
         return true;
     }
 
+    private function versions()
+    {
+        $versions = Version::all()->lists('id')->all();
+        $str = implode(",", $versions);
+        return $str;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,7 +33,8 @@ class CreateBin extends Request
     {
         $rules = [
             'title' => 'required',
-            'visibility' => 'required|in:0,1,2'
+            'visibility' => 'required|in:0,1,2',
+            'versions' => 'required|array|in:' . $this->versions()
         ];
 
         foreach($this->request->get('name') as $key => $value)

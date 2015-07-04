@@ -47,7 +47,7 @@
 
         <div class="bin-details panel panel-default">
             <div class="panel-heading">
-                <small>{!! $bin->label() !!}</small>&nbsp;&nbsp;&nbsp;
+                <small>{!! $bin->label() !!}{!! $bin->versions_label() !!}</small>
                 <a href="{{ $bin->user->url() }}">{{ $bin->user->username }}</a>&nbsp;&nbsp;/&nbsp;&nbsp;{{ $bin->title }}
             </div>
             @if($bin->description)

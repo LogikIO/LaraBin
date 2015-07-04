@@ -44,8 +44,11 @@ Route::group(['middleware' => 'guest'], function () {
 
 });
 
-get('hash/{id}', function($id){
-   return hashid()->encode($id);
+use App\LaraBin\Models\Bins\Version;
+get('test', function(){
+    $versions = Version::all()->lists('id')->all();
+    $str = implode(",", $versions);
+    dd($str);
 });
 
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);

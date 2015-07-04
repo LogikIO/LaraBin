@@ -8,7 +8,7 @@ class Bin extends Model
 {
     protected $table = 'bins';
 
-    protected $fillable = ['user_id', 'title', 'description', 'visibility'];
+    protected $fillable = ['user_id', 'title', 'description', 'visibility', 'version_id'];
 
     public function user()
     {
@@ -18,6 +18,11 @@ class Bin extends Model
     public function snippets()
     {
         return $this->hasMany('\App\LaraBin\Models\Bins\Snippets\Snippet');
+    }
+
+    public function versions()
+    {
+        return $this->belongsToMany('\App\LaraBin\Models\Bins\Version');
     }
 
     // Methods
@@ -56,10 +61,21 @@ class Bin extends Model
     public function label()
     {
         switch ($this->visibility) {
-            case 0: return '<span class="label label-warning">Private</span>';
-            case 1: return '<span class="label label-success">Public</span>';
-            case 2: return '<span class="label label-default">Unlisted</span>';
+            case 0: return '<span class="label-visibility label label-warning">Private</span>';
+            case 1: return '<span class="label-visibility label label-success">Public</span>';
+            case 2: return '<span class="label-visibility label label-default">Unlisted</span>';
         }
+    }
+
+    public function versions_label()
+    {
+        $html = '';
+        $versions = $this->versions->lists('name')->all();
+        foreach($versions as $version) {
+            $html .= '<span class ="label label-versions">' . $version . '</span>';
+        }
+
+        return $html;
     }
 
     public function modified()

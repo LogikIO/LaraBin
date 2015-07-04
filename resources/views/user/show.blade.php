@@ -74,7 +74,7 @@
                     @foreach($bins as $bin)
                         <div class="bin-details panel panel-default">
                             <div class="panel-heading">
-                                <a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                                <small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->url() }}">{{ $bin->title }}</a>
                             </div>
                             @if($bin->description)
                                 <div class="panel-body" style="padding:15px;">

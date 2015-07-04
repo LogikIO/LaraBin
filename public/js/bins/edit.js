@@ -123,9 +123,20 @@ $('form').submit(function(e){
         e.preventDefault();
         processError('You must include at least one file!');
     }
+    if (!$('[name="versions[]"] option:selected').length) {
+        e.preventDefault();
+        processError('You must select at least one Laravel version!');
+    }
 });
 
 function processError(error) {
     $errors.text(error).show();
     throw error;
 }
+
+$('.selectpicker').selectpicker({
+    iconBase: 'fa',
+    tickIcon: 'fa-check',
+    styleBase: 'btn btn-sm',
+    style: 'btn-info'
+});

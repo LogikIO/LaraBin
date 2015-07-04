@@ -15,6 +15,7 @@
     width: 100px;
 }
 .details span{margin-right:4px}
+.label-versions:first-of-type{margin-left:6px;}
 @stop
 
 @section('customjsfiles')
@@ -53,7 +54,7 @@ $('.visibility').on('change', function(){
             @foreach($bins as $bin)
                 <div id="{{ hashid()->encode($bin->id) }}" data-title="{{ $bin->title }}" class="bin-details panel panel-default">
                     <div class="panel-heading">
-                        {!! Form::select('visibility', binVisibility(), $bin->visibility, ['class' => 'form-control input-sm visibility', 'data-id' => hashid()->encode($bin->id)]) !!}&nbsp;&nbsp;&nbsp;<a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                        {!! Form::select('visibility', binVisibility(), $bin->visibility, ['class' => 'form-control input-sm visibility', 'data-id' => hashid()->encode($bin->id)]) !!}<small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->url() }}">{{ $bin->title }}</a>
                     </div>
                     @if($bin->description)
                         <div class="panel-body">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Bins;
 
+use App\LaraBin\Models\Bins\Version;
 use App\LaraBin\Models\Bins\Bin;
 use App\LaraBin\Models\Bins\Snippets\Snippet;
 use App\LaraBin\Models\Bins\Snippets\Type;
@@ -15,8 +16,9 @@ class BinController extends Controller
     public function create()
     {
         $types = Type::all()->lists('display', 'css_class')->all();
+        $versions = Version::all()->lists('name', 'id')->all();
 
-        return view('bin.create', compact('types'));
+        return view('bin.create', compact('types', 'versions'));
     }
 
     public function createPost(Requests\Bins\CreateBin $request)
@@ -29,6 +31,8 @@ class BinController extends Controller
             'description' => $description,
             'visibility' => $request->input('visibility')
         ]);
+
+        $bin->versions()->sync($request->input('versions'));
 
         $files = [];
 
@@ -89,8 +93,9 @@ class BinController extends Controller
     public function edit(Bin $bin)
     {
         $types = Type::all()->lists('display', 'css_class')->all();
+        $versions = Version::all()->lists('name', 'id')->all();
 
-        return view('bin.edit', compact('bin', 'types'));
+        return view('bin.edit', compact('bin', 'types', 'versions'));
     }
 
     public function editPost(Bin $bin, Requests\Bins\CreateBin $request)
@@ -102,6 +107,7 @@ class BinController extends Controller
         $bin->visibility = $request->input('visibility');
         $bin->save();
 
+        $bin->versions()->sync($request->input('versions'));
 
         // Files that currently exist with the bin object
         $existingFiles = [];

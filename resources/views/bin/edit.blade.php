@@ -7,6 +7,7 @@
 
 @section('customcssfiles')
     {!! HTML::style('css/bins/create.css') !!}
+    {!! HTML::style('vendors/bootstrap-select/css/bootstrap-select.min.css') !!}
 @stop
 
 @section('customcss')
@@ -15,6 +16,7 @@
 
 @section('customjsfiles')
     {!! HTML::script('vendors/ace/src-min-noconflict/ace.js') !!}
+    {!! HTML::script('vendors/bootstrap-select/js/bootstrap-select.min.js') !!}
     {!! HTML::script('js/bins/edit.js') !!}
 @stop
 
@@ -47,6 +49,13 @@
                             <div class="form-group">
                                 <label class="control-label">Bin Description <small>(not required)</small></label>
                                 {!! Form::text('description', $bin->description, ['class' => 'form-control input-sm', 'placeholder' => 'Bin Description', 'maxlength' => '255']) !!}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-10">
+                            <div class="form-group">
+                                <label class="control-label">Laravel Version(s)</label>
+                                <br>
+                                {!! Form::select('versions[]', $versions, $bin->versions->lists('id')->all(), ['class' => 'selectpicker', 'multiple' => '']) !!}
                             </div>
                         </div>
                     </div>
