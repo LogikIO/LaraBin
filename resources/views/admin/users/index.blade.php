@@ -34,6 +34,7 @@ form.activate {
                     <th>Name</th>
                     <th>Username</th>
                     <th>Email</th>
+                    <th>Created At</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -44,6 +45,7 @@ form.activate {
                         <td>{{ $user->name }}</td>
                         <td>{!! ($user->usingGithub()) ? '<i class="fa fa-github"></i>' : '' !!}<a href="{{ $user->url() }}">{{ $user->username }}</a></td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>
                             @if(!$user->verified())
                                 {!! Form::open(['route' => 'admin.users.activate', 'class' => 'activate']) !!}
