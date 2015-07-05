@@ -10,7 +10,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li class="{{ Menu::isActiveRoute('bins.all') }}"><a href="{{ route('bins.all') }}">All Bins</a></li>
+                <li class="{{ Menu::areActiveRoutes(['bins.all', 'bins.recent']) }}"><a href="{{ route('bins.all') }}">All Bins</a></li>
                 @if(auth()->check())
                     <li class="{{ Menu::isActiveRoute('bins.my') }}"><a href="{{ route('bins.my') }}">My Bins</a></li>
                     <li class="{{ Menu::isActiveRoute('bins.create') }}"><a href="{{ route('bins.create') }}">Create Bin +</a></li>
