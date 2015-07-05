@@ -45,7 +45,7 @@ p.sort a{margin-right:6px}
                             <span class="details">
                                 <small>
                                     <span><i class="fa fa-file-text-o"></i> {{ $bin->snippets->count() }}</span>
-                                    <span><i class="fa fa-comments"></i> {{ $bin->comments->count() }}</span>
+                                    <span><i class="fa fa-comments"></i> <a href="{{ route('bin.comments', $bin->getRouteKey()) }}">{{ $bin->comments->count() }}</a></span>
                                     <span title="Created"><i class="fa fa-clock-o"></i> {{ $bin->created_at->diffForHumans() }}</span>
                                     @if($bin->modified())
                                         <span title="Updated"><i class="fa fa-pencil"></i> {{ $bin->updated_at->diffForHumans() }}</span>
