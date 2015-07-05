@@ -25,7 +25,7 @@
 <div class="row">
     <div class="col-xs-12">
         <a href="{{ route('admin.twitter.new') }}" class="btn btn-sm btn-success">New Tweet +</a>
-        <h4><a href="https://twitter.com/LaraBinCom">@LaraBinCom</a> Tweets</h4>
+        <h4><a href="https://twitter.com/LaraBinCom">@LaraBinCom</a> Tweets <small>( 20 most recent )</small></h4>
         @foreach($tweets as $tweet)
             <div class="comment-details panel-default m-b-20">
                 <div class="panel-heading"><a href="https://twitter.com/LaraBinCom/status/{{ $tweet->id }}">Link</a><span style="float:right">ID: {{ $tweet->id }}</span></div>
