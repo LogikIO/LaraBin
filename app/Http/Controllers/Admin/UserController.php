@@ -64,6 +64,9 @@ class UserController extends Controller
         $user = User::find($request->input('id'));
         $user->verified = 1;
         $user->save();
+
+        $user->emailVerification()->delete();
+
         $mailer->sendManualActivationEmailTo($user);
         session()->flash('success', 'User <strong>' . $user->username . '</strong> successfully activated!');
 
