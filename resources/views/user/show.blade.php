@@ -23,7 +23,7 @@
 
 @section('content')
     <div class="row profile">
-        <div class="col-md-3">
+        <div class="col-md-3 m-b-20">
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
