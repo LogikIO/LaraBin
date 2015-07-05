@@ -58,7 +58,7 @@ class GithubController extends Controller
                 return redirect()->route('home');
             }
 
-            auth()->login($exists);
+            auth()->login($exists, true);
 
             event(new UserHasLoggedIn($exists));
 
