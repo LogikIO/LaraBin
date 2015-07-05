@@ -2,15 +2,17 @@
 
 @else
     <div class="alert alert-info">
-        There are currently no comments.
+        There are currently no comments. ( working on this feature :) )
     </div>
 @endif
 
-<div class="editor-instance">
-    <div class="row">
-        <div class="col-xs-12">
-            {!! Form::textarea('message', null, ['class' => 'real-code', 'style' => 'display:none']) !!}
-            <div id="editor-area"></div>
+@if(auth()->check())
+    <div class="editor-instance">
+        <div class="row">
+            <div class="col-xs-12">
+                {!! Form::textarea('message', null, ['class' => 'real-code', 'style' => 'display:none']) !!}
+                <div id="editor-area"></div>
+            </div>
         </div>
     </div>
-</div>
+@endif
