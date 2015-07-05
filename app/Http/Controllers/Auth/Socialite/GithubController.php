@@ -40,9 +40,11 @@ class GithubController extends Controller
 
                 $email = ($checkEmail) ? null : $user->getEmail();
 
+                $name = ($user->getName() != '') ? $user->getName() : $username;
+
                 $newUser = User::create([
                     'github_token' => $user->token,
-                    'name' => $user->getName(),
+                    'name' => $name,
                     'username' => $username,
                     'email' => $email,
                     'verified' => true,

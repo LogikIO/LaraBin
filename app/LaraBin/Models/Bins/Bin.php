@@ -27,6 +27,11 @@ class Bin extends Model
         return $this->belongsToMany('\App\LaraBin\Models\Bins\Version')->orderBy('name');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('\App\LaraBin\Models\Bins\Comments\Comment');
+    }
+
     // Methods
 
     /**
@@ -46,7 +51,12 @@ class Bin extends Model
      */
     public function url()
     {
-        return route('bin', $this->getRouteKey());
+        return route('bin.code', $this->getRouteKey());
+    }
+
+    public function commentsUrl()
+    {
+        return route('bin.comments', $this->getRouteKey());
     }
 
     /**

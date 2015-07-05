@@ -51,7 +51,8 @@ Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
 
 Route::get('bins/recent/{version?}', ['as' => 'bins.recent', 'uses' => 'Bins\BinController@allRecent']);
 Route::get('bins/{version?}', ['as' => 'bins.all', 'uses' => 'Bins\BinController@all']);
-Route::get('{bin}', ['as' => 'bin', 'uses' => 'Bins\BinController@show', 'middleware' => 'bin.view']);
+Route::get('{bin}', ['as' => 'bin.code', 'uses' => 'Bins\BinController@show', 'middleware' => 'bin.view']);
+Route::get('{bin}/comments', ['as' => 'bin.comments', 'uses' => 'Bins\CommentController@comments', 'middleware' => 'bin.view']);
 Route::get('{bin}/edit', ['as' => 'bin.edit', 'uses' => 'Bins\BinController@edit', 'middleware' => ['auth', 'bin.manage']]);
 Route::post('{bin}/edit', ['uses' => 'Bins\BinController@editPost', 'middleware' => ['auth', 'bin.manage']]);
 Route::get('{bin}/delete', ['as' => 'bin.delete', 'uses' => 'Bins\BinController@delete', 'middleware' => ['auth', 'bin.manage']]);

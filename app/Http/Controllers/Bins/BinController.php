@@ -67,12 +67,12 @@ class BinController extends Controller
         }
         session()->flash('success', 'Bin created successfully!');
 
-        return redirect()->route('bin', $bin->getRouteKey());
+        return redirect()->route('bin.code', $bin->getRouteKey());
     }
 
     public function show(Bin $bin)
     {
-        return view('bin.show', compact('bin'));
+        return view('bin.show.code', compact('bin'));
     }
 
     public function showSnippet(Bin $bin, $snippet)
@@ -82,7 +82,7 @@ class BinController extends Controller
         if (empty($snippetId)) {
             session()->flash('error', 'No file with that ID can be found!');
 
-            return redirect()->route('bin', $bin->getRouteKey());
+            return redirect()->route('bin.code', $bin->getRouteKey());
         }
 
         $snippet = $bin->snippets()->where('id', $snippetId)->first();
@@ -90,7 +90,7 @@ class BinController extends Controller
         if (!$snippet) {
             session()->flash('error', 'No file with that ID can be found!');
 
-            return redirect()->route('bin', $bin);
+            return redirect()->route('bin.code', $bin->getRouteKey());
         }
 
         return view('bin.show-snippet', compact('snippet'));
@@ -186,16 +186,16 @@ class BinController extends Controller
 
         session()->flash('success', 'Bin updated successfully!');
 
-        return redirect()->route('bin', $bin->getRouteKey());
+        return redirect()->route('bin.code', $bin->getRouteKey());
     }
 
     public function all($version = null)
     {
         $active = 'latest';
         if ($version) {
-            $bins = Bin::publicOnly()->version($version)->with(['snippets','user'])->latest()->paginate(10);
+            $bins = Bin::publicOnly()->version($version)->with(['snippets','user', 'comments'])->latest()->paginate(10);
         } else {
-            $bins = Bin::publicOnly()->with(['snippets', 'user'])->latest()->paginate(10);
+            $bins = Bin::publicOnly()->with(['snippets', 'user', 'comments'])->latest()->paginate(10);
         }
 
         return view('bin.all', compact('bins', 'active'));
@@ -205,9 +205,9 @@ class BinController extends Controller
     {
         $active = 'recent';
         if ($version) {
-            $bins = Bin::publicOnly()->version($version)->with(['snippets','user'])->orderBy('updated_at', 'DESC')->paginate(10);
+            $bins = Bin::publicOnly()->version($version)->with(['snippets','user', 'comments'])->orderBy('updated_at', 'DESC')->paginate(10);
         } else {
-            $bins = Bin::publicOnly()->with(['snippets', 'user'])->orderBy('updated_at', 'DESC')->paginate(10);
+            $bins = Bin::publicOnly()->with(['snippets', 'user', 'comments'])->orderBy('updated_at', 'DESC')->paginate(10);
         }
 
         return view('bin.all', compact('bins', 'active'));
@@ -215,7 +215,7 @@ class BinController extends Controller
 
     public function my()
     {
-        $bins = Bin::where('user_id', auth()->user()->getAuthIdentifier())->with('snippets')->orderBy('updated_at', 'DESC')->paginate(8);
+        $bins = Bin::where('user_id', auth()->user()->getAuthIdentifier())->with(['snippets', 'comments'])->orderBy('updated_at', 'DESC')->paginate(8);
 
         return view('bin.my', compact('bins'));
     }

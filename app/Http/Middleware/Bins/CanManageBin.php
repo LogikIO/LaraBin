@@ -21,7 +21,7 @@ class CanManageBin
         if (!static::canManageBin($bin)) {
             session()->flash('error', 'You do not have permission to manage this bin!');
 
-            return redirect()->route('bin', $bin->getRouteKey());
+            return redirect()->route('bin.code', $bin->getRouteKey());
         }
 
         return $next($request);

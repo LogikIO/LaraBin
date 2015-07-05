@@ -1,0 +1,32 @@
+.panel-body{padding:0}
+.markrender{padding:15px}
+.plaintext > pre{padding: 0.5em}
+.details span{margin-right:4px}
+.bin-panel i{margin-right:6px}
+.bin-panel a{font-size:12px}
+.bin-panel .list-group-item {
+    border: 0;
+    border-radius: 0;
+}
+.bin-panel .list-group-item .badge {
+    font-size: 8px;
+    border-radius: 3px;
+}
+.bin-panel .list-group-item.active,
+.bin-panel .list-group-item.active:hover,
+.bin-panel .list-group-item.active:focus {
+    background-color: #18bc9c;
+}
+.bin-panel .list-group-item:first-child,
+.bin-panel .list-group-item:last-child {
+    border-radius: 0;
+}
+.panel-footer .manage,
+.panel-heading .raw {
+    position: absolute;
+    right: 24px;
+}
+.panel-footer .manage a,
+.panel-heading .raw a {
+    font-size: 10px;
+}
