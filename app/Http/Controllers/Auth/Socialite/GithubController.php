@@ -52,7 +52,8 @@ class GithubController extends Controller
                     'settings' => []
                 ]);
 
-                auth()->login($newUser);
+                auth()->login($newUser, true);
+                event(new UserHasLoggedIn($newUser));
                 session()->flash('success', 'Successfully logged in!');
 
                 return redirect()->route('home');
