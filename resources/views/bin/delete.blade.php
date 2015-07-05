@@ -26,7 +26,7 @@
         <div class="col-md-6 col-md-offset-3">
 
             <div class="alert alert-warning">
-                <strong>Heads up!</strong> Deleting this bin will also delete the {{ auth()->user()->snippets->count() }} associated files. Proceed with caution!
+                <strong>Heads up!</strong> Deleting this bin will also delete the {{ $bin->snippets->count() }} associated files and {{ $bin->comments->count() }} comments. Proceed with caution!
             </div>
 
             <div class="row">
@@ -44,6 +44,7 @@
                             <span class="details">
                                 <small>
                                     <span><i class="fa fa-file-text-o"></i> {{ $bin->snippets->count() }}</span>
+                                    <span><i class="fa fa-comments"></i> <a href="{{ route('bin.comments', $bin->getRouteKey()) }}">{{ $bin->comments->count() }}</a></span>
                                     <span title="Created"><i class="fa fa-clock-o"></i> {{ $bin->created_at->diffForHumans() }}</span>
                                     @if($bin->modified())
                                         <span title="Updated"><i class="fa fa-pencil"></i> {{ $bin->updated_at->diffForHumans() }}</span>
