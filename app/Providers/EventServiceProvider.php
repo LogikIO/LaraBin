@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\UserHasLoggedIn;
+use App\Listeners\UpdateLastLogInTime;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,9 +15,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
+        UserHasLoggedIn::class => [
+            UpdateLastLogInTime::class
+        ]
     ];
 
     /**

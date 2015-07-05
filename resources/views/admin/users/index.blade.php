@@ -36,6 +36,7 @@ span.github{margin-right:6px}
                     <th>Username</th>
                     <th>Email</th>
                     <th>Created At</th>
+                    <th>Last Login</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -47,6 +48,7 @@ span.github{margin-right:6px}
                         <td>{!! ($user->usingGithub()) ? '<span class="github"><i class="fa fa-github"></i></span>' : '' !!}<a href="{{ $user->url() }}">{{ $user->username }}</a></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
+                        <td>{{ $user->last_login->diffForHumans() }}</td>
                         <td>
                             @if(!$user->verified())
                                 {!! Form::open(['route' => 'admin.users.activate', 'class' => 'activate']) !!}

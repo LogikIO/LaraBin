@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth\Socialite;
 
+use App\Events\UserHasLoggedIn;
 use App\LaraBin\Models\User;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,9 @@ class GithubController extends Controller
             }
 
             auth()->login($exists);
+
+            event(new UserHasLoggedIn($exists));
+
             session()->flash('success', 'Successfully logged in!');
 
             return redirect()->route('home');

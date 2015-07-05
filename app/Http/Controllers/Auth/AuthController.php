@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserHasLoggedIn;
 use App\LaraBin\Mail\AppMailer;
 use App\LaraBin\Models\Auth\PasswordReset;
 use App\LaraBin\Models\User;
@@ -56,6 +57,7 @@ class AuthController extends Controller
         }
 
         auth()->login($user, $remember);
+        event(new UserHasLoggedIn($user));
         session()->flash('success', 'Successfully logged in!');
 
         return redirect()->intended(route('home'));

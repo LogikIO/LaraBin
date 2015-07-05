@@ -18,10 +18,12 @@ class User extends Model implements AuthenticatableContract
         'name', 'username', 'email',
         'password', 'verified', 'github_token',
         'github_avatar',
-        'settings'
+        'settings', 'last_login'
     ];
 
     protected $hidden = ['password', 'remember_token'];
+
+    protected $dates = ['last_login'];
 
     protected $casts = [
         'settings' => 'array'
