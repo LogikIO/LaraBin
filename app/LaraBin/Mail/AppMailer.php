@@ -2,6 +2,7 @@
 
 namespace App\LaraBin\Mail;
 
+use App\LaraBin\Models\Bins\Bin;
 use App\LaraBin\Models\User;
 use Illuminate\Contracts\Mail\Mailer;
 
@@ -52,6 +53,11 @@ class AppMailer
         $this->data = ['name' => $user->name];
 
         $this->deliver();
+    }
+
+    public function sendCommentNotificationTo(User $to, User $from, Bin $bin)
+    {
+
     }
 
     public function deliver()

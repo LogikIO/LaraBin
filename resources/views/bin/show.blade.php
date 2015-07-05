@@ -20,7 +20,6 @@
 @section('customjsfiles')
     {!! HTML::script('vendors/highlightjs/highlight.pack.js') !!}
     {!! HTML::script('vendors/highlightjs/highlightjs-line-numbers.js') !!}
-    {!! HTML::script('js/marked.min.js') !!}
     {!! HTML::script('js/bins/show.js') !!}
 @stop
 
