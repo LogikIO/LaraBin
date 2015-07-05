@@ -32,5 +32,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class,
         'bin.view' => \App\Http\Middleware\Bins\CanViewBin::class,
         'bin.manage' => \App\Http\Middleware\Bins\CanManageBin::class,
+        'comment.manage' => \App\Http\Middleware\Bins\CanManageComment::class,
     ];
 }

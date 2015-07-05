@@ -49,6 +49,11 @@ class User extends Model implements AuthenticatableContract
         return $this->hasManyThrough('\App\LaraBin\Models\Bins\Snippets\Snippet', '\App\LaraBin\Models\Bins\Bin');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('\App\LaraBin\Models\Bins\Comments\Comment');
+    }
+
     // Methods
 
     public function settings()

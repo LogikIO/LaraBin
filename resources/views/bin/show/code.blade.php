@@ -9,7 +9,7 @@
     {!! HTML::style('vendors/highlightjs/github-gist.css') !!}
     {!! HTML::style('css/markdown-github.css') !!}
     {!! HTML::style('css/bins/show.css') !!}
-    @if(Menu::isActiveRouteCheck('bin.comments'))
+    @if(Menu::areActiveRoutesCheck(['bin.comments', 'bin.comments.edit']))
         {!! HTML::style('css/bins/comments.css') !!}
     @endif
 @stop
@@ -19,8 +19,8 @@
 @stop
 
 @section('customjsfiles')
-    @if(Menu::isActiveRouteCheck('bin.comments'))
-        {!! HTML::script('vendors/ace/src-min-noconflict/ace.js') !!}
+    @if(Menu::areActiveRoutesCheck(['bin.comments', 'bin.comments.edit']))
+        {!! HTML::script('vendors/taboverride/taboverride.min.js') !!}
         {!! HTML::script('js/bins/comments.js') !!}
     @endif
     {!! HTML::script('vendors/highlightjs/highlight.pack.js') !!}
@@ -44,6 +44,14 @@
 
         @if(Menu::isActiveRouteCheck('bin.comments'))
             @include('bin.show.partials.comments')
+        @endif
+
+        @if(Menu::isActiveRouteCheck('bin.comments.edit'))
+            @include('bin.show.partials.edit-comment')
+        @endif
+
+        @if(Menu::isActiveRouteCheck('bin.comments.delete'))
+            @include('bin.show.partials.delete-comment')
         @endif
 
     </div>

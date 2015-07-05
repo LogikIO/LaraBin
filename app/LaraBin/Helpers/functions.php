@@ -22,6 +22,10 @@ function commonmark() {
     return new CommonMarkConverter();
 }
 
+function markdown() {
+    return new \App\LaraBin\Services\Markdown\LaraBinParse();
+}
+
 function binVisibility() {
     return [
         0 => 'Private',

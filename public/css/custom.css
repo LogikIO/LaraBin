@@ -35,7 +35,7 @@ pre, code {
     font-size: 12px;
 }
 .bin-details .details span{margin-right:4px}
-.bin-details {
+.bin-details, .comment-details {
     background:#F7F7F7;
     border:0;
 }

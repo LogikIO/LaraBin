@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\UserHasLoggedIn;
+use App\Events\Bin\UserCommentedOnBin;
 use App\Listeners\UpdateLastLogInTime;
+use App\Listeners\Bin\NotifyBinOwnerOfComment;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -17,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         UserHasLoggedIn::class => [
             UpdateLastLogInTime::class
+        ],
+        UserCommentedOnBin::class => [
+            NotifyBinOwnerOfComment::class
         ]
     ];
 

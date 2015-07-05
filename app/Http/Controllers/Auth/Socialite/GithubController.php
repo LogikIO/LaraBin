@@ -79,10 +79,11 @@ class GithubController extends Controller
 
     private static function usernameCheck($nickname)
     {
+        $cleaned = preg_replace('/[a-zA-Z0-9_]/', '', $nickname);
         $found = true;
         $count = 1;
 
-        $cleanName = $nickname;
+        $cleanName = $cleaned;
 
         while ($found == true) {
             $addName = ($count == 1) ? $nickname : $nickname . $count;

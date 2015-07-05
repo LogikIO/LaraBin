@@ -37,6 +37,11 @@
                     </div>
                     <div class="profile-usertitle-job">
                         {{ $user->username }}
+                        @if($user->admin())
+                            <p class="m-t-10">
+                                <span class="label label-danger">Admin</span>
+                            </p>
+                        @endif
                     </div>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->

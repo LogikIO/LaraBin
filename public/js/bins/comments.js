@@ -1,13 +1,22 @@
-// initialize the editor
-var editor = ace.edit('editor-area');
-editor.setTheme("ace/theme/chrome");
-// follow PSR-2
-editor.getSession().setTabSize(4);
-editor.getSession().setUseSoftTabs(true);
-editor.getSession().setMode('ace/mode/markdown');
+$errors = $('#errors').hide();
+$comment = $('#comment');
+tabOverride.set(document.getElementById('comment'));
+tabOverride.tabSize(4);
+tabOverride.autoIndent(false);
+$('form').submit(function(e){
+    if ($.trim($comment.val()) == '') {
+        e.preventDefault();
+        processError('Comment cannot be blank!');
+    }
+});
 
-var textarea = $('.editor-instance .message');
-editor.getSession().setValue(textarea.val());
-editor.getSession().on('change', function(){
-    textarea.val(editor.getSession().getValue());
+function processError(error) {
+    $errors.text(error).show();
+    throw error;
+}
+
+$(document).ready(function() {
+    $('.markcomment pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
 });

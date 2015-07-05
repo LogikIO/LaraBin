@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace App\Events\Bin;
 
 use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
@@ -10,24 +10,11 @@ class UserCommentedOnBin extends Event
 {
     use SerializesModels;
 
-    /**
-     * User that made the comment
-     *
-     * @var
-     */
-    public $user;
+    public $comment;
 
-    /**
-     * Bin that comment was made on
-     *
-     * @var
-     */
-    public $bin;
-
-    public function __construct($user, $bin)
+    public function __construct($comment)
     {
-        $this->user = $user;
-        $this->bin = $bin;
+        $this->comment = $comment;
     }
 
     /**

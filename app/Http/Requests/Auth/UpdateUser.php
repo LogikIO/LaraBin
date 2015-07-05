@@ -25,7 +25,7 @@ class UpdateUser extends Request
     {
         return [
             'name' => 'required',
-            'username' => 'required|min:3|unique:users,username,'.auth()->user()->getAuthIdentifier().'|regex:/\A[\w\-\.]+\z/',
+            'username' => 'required|min:3|unique:users,username,'.auth()->user()->getAuthIdentifier().'|regex:/[a-zA-Z0-9_]/',
             'email' => 'required|email|unique:users,email,'.auth()->user()->getAuthIdentifier(),
             'new_password' => 'required_with:new_password_confirmation|confirmed|min:6',
             'new_password_confirmation' => 'required_with:new_password'
@@ -35,7 +35,7 @@ class UpdateUser extends Request
     public function messages()
     {
         return [
-            'username.regex' => 'Only letters, numbers, dashes, underscores and periods.'
+            'username.regex' => 'Only letters, numbers, underscores.'
         ];
     }
 }

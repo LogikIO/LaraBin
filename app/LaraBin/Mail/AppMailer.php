@@ -3,6 +3,7 @@
 namespace App\LaraBin\Mail;
 
 use App\LaraBin\Models\Bins\Bin;
+use App\LaraBin\Models\Bins\Comments\Comment;
 use App\LaraBin\Models\User;
 use Illuminate\Contracts\Mail\Mailer;
 
@@ -55,9 +56,14 @@ class AppMailer
         $this->deliver();
     }
 
-    public function sendCommentNotificationTo(User $to, User $from, Bin $bin)
+    public function sendCommentNotificationTo(Comment $comment)
     {
+        $this->to = $comment->bin->user->email;
+        $this->view = 'emails.bin.new-comment';
+        $this->subject = 'LaraBin.com - New comment on your bin!';
+        $this->data = ['comment' => $comment];
 
+        $this->deliver();
     }
 
     public function deliver()

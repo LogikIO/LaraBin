@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\LaraBin\Models\Bins\Bin;
+use App\LaraBin\Models\Bins\Comments\Comment;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -36,6 +37,20 @@ class RouteServiceProvider extends ServiceProvider
             }
 
             return Bin::where('id', $id)->first();
+
+        });
+
+        $router->bind('comment', function($value) {
+
+            $id = hashid()->decode($value);
+
+            if(empty($id)) {
+                $id = null;
+            } else {
+                $id = $id[0];
+            }
+
+            return Comment::where('id', $id)->first();
 
         });
 
