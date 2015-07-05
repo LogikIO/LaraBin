@@ -1,6 +1,7 @@
 body {overflow-x:hidden;}
 body > .navbar {border-radius:0;margin-bottom:0;}
 body > .container {padding:30px 0;}
+body > .container > .row {margin:0;}
 body > #site-alert {border-radius:0;}
 
 .hljs-line-numbers {

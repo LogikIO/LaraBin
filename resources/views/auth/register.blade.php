@@ -26,11 +26,11 @@
 @section('content')
 <div class="row">
 
-    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="margin-bottom:20px;">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" style="margin-bottom:20px;">
         <a href="{{ route('social.github') }}" class="btn btn-block btn-social btn-lg btn-github"><i class="fa fa-github"></i>Register with GitHub</a>
     </div>
 
-    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
         <div class="well">
             {!! Form::open(['route' => 'register', 'class' => 'form-horizontal']) !!}

@@ -27,7 +27,7 @@ span.github{margin-right:6px}
 
 @section('content')
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-12">
         <table class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>

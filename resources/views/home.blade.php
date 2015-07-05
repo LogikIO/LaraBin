@@ -27,7 +27,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 browser-container">
+    <div class="col-xs-12 browser-container">
 
         <h1>Laravel code snippet repository.</h1>
 
@@ -45,7 +45,7 @@
         </div>
 
     </div>
-    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3" style="text-align: center;">
+    <div class="col-xs-12 col-md-6 col-md-offset-3" style="text-align: center;">
         <h3>Welcome to LaraBin!</h3>
         <p>LaraBin is a code snippet repository specifically dedicated to <a href="http://laravel.com">Laravel</a> code.</p>
         <p>Create an account and paste away! :)</p>

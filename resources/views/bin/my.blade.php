@@ -49,7 +49,7 @@ $('.visibility').on('change', function(){
 
 @section('content')
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-12">
         @if($bins->count())
             @foreach($bins as $bin)
                 <div id="{{ hashid()->encode($bin->id) }}" data-title="{{ $bin->title }}" class="bin-details panel panel-default">

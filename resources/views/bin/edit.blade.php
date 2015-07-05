@@ -26,7 +26,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
+        <div class="col-xs-12">
             <div class="row">
                 {!! Form::open(['route' => ['bin.edit', $bin->getRouteKey()]]) !!}
                 <div class="col-xs-12">

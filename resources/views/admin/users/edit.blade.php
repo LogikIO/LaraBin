@@ -23,7 +23,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
         <div class="well">
             {!! Form::open(['route' => ['admin.users.edit', $user->id], 'class' => 'form-horizontal']) !!}
