@@ -27,6 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('users/{id}/edit', ['as' => 'users.edit', 'uses' => 'Admin\UserController@edit']);
         Route::post('users/{id}/edit', ['uses' => 'Admin\UserController@editPost']);
         Route::post('users/activate', ['as' => 'users.activate', 'uses' => 'Admin\UserController@activate']);
+
+        Route::get('twitter', ['as' => 'twitter', 'uses' => 'Admin\TwitterController@index']);
+        Route::get('twitter/new', ['as' => 'twitter.new', 'uses' => 'Admin\TwitterController@newTweet']);
+        Route::post('twitter/new', ['uses' => 'Admin\TwitterController@newTweetPost']);
+        Route::get('twitter/{tweet}/delete', ['as' => 'twitter.delete', 'uses' => 'Admin\TwitterController@delete']);
     });
 
 });

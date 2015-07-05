@@ -1,0 +1,5 @@
+.panel-footer .manage,
+.panel-heading .raw {
+    position: absolute;
+    right: 24px;
+}
