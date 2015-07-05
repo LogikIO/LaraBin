@@ -20,6 +20,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route('admin.users') }}">Users</a></li>
                                 <li><a href="{{ route('admin.twitter') }}">Twitter</a></li>
+                                <li><a href="{{ route('admin.logs') }}" target="_blank">Logs</a></li>
                             </ul>
                         </li>
                     @endif

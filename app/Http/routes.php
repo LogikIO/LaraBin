@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['middleware' => 'admin', 'as' => 'admin.', 'prefix' => 'admin'], function () {
+        Route::get('logs', ['as' => 'logs', 'uses' => '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index']);
+
         Route::get('users', ['as' => 'users', 'uses' => 'Admin\UserController@index']);
         Route::get('users/{id}/edit', ['as' => 'users.edit', 'uses' => 'Admin\UserController@edit']);
         Route::post('users/{id}/edit', ['uses' => 'Admin\UserController@editPost']);

@@ -153,6 +153,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 
