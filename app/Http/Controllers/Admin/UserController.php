@@ -38,7 +38,7 @@ class UserController extends Controller
 
             return redirect()->route('admin.users');
         }
-        
+
         $user->name = $request->input('name');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
