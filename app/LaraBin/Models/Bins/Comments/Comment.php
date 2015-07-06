@@ -42,7 +42,7 @@ class Comment extends Model
 
     public function getCommentUrl()
     {
-        $comments = $this->bin->comments->lists('id')->all();
+        $comments = $this->where('bin_id', $this->bin_id)->lists('id')->all();
         $pages = array_chunk($comments, 10);
         foreach($pages as $page => $comments) {
             $pageNumber = $page + 1;
