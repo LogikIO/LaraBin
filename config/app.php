@@ -154,6 +154,7 @@ return [
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
     ],
 
@@ -215,6 +216,7 @@ return [
         'Debugbar'      => Barryvdh\Debugbar\Facade::class,
         'Recaptcha'     => Greggilbert\Recaptcha\Facades\Recaptcha::class,
         'Twitter'       => Thujohn\Twitter\Facades\Twitter::class,
+        'Bugsnag'       => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
 
     ],
 
