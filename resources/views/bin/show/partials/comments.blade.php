@@ -3,7 +3,7 @@
         @if($bin->comments->count())
             @foreach($comments as $comment)
                 <div id="{{ $comment->getRouteKey() }}" class="comment-details panel-default m-b-20 markcomment">
-                    <div class="panel-heading"><a href="{{ $comment->user->url() }}">{{ $comment->user->username }}</a><span style="float:right;"><a href="#{{ $comment->getRouteKey() }}">#</a></span></div>
+                    <div class="panel-heading"><a href="{{ $comment->user->url() }}">{{ $comment->user->username }}</a><span style="float:right;"><a href="{{ $comment->getCommentUrl() }}">#</a></span></div>
                     <div class="panel-body" style="padding:15px;">
                         {!! markdown()->renderComment($comment->message) !!}
                     </div>
