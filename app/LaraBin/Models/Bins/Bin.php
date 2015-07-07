@@ -66,7 +66,9 @@ class Bin extends Model
 
     public function tweeted()
     {
-        return ($this->tweeted) ? true : false;
+        if (auth()->check() && auth()->user()->admin()) {
+            return ($this->tweeted) ? true : false;
+        }
     }
 
     /**
