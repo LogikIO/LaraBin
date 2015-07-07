@@ -12,6 +12,7 @@
     @if(Menu::areActiveRoutesCheck(['bin.comments', 'bin.comments.edit']))
         {!! HTML::style('css/bins/comments.css') !!}
     @endif
+    {!! HTML::style('css/bootstrap-social.css') !!}
 @stop
 
 @section('customcss')
@@ -26,6 +27,7 @@
     {!! HTML::script('vendors/highlightjs/highlight.pack.js') !!}
     {!! HTML::script('vendors/highlightjs/highlightjs-line-numbers.js') !!}
     {!! HTML::script('js/bins/show.js') !!}
+    {!! HTML::script('vendors/bootboxjs/bootbox.min.js') !!}
 @stop
 
 @section('customjs')
@@ -68,9 +70,11 @@
         <div class="col-xs-12 col-md-2">
             <h5>Admin</h5>
             <div class="bin-panel list-group">
-                {!! Form::open(['route' => ['admin.twitter.tweet', $bin->getRouteKey()]]) !!}
-                    <button type="submit" class="btn btn-block btn-info btn-xs"><i class="fa fa-twitter"></i> Tweet Bin</button>
+                {!! Form::open(['route' => ['admin.twitter.tweet', $bin->getRouteKey()], 'id' => 'tweet-bin', 'style' => 'display:none;']) !!}
                 {!! Form::close() !!}
+                <button class="btn btn-block btn-sm btn-social btn-twitter" id="tweet-bin-button"><i class="fa fa-twitter"></i>Tweet Bin</button>
+                <a href="{{ route('bin.edit', $bin->getRouteKey()) }}" class="btn btn-sm btn-info btn-block">Edit Bin</a>
+                <a href="{{ route('bin.delete', $bin->getRouteKey()) }}" class="btn btn-sm btn-danger btn-block">Delete Bin</a>
             </div>
         </div>
     @endif
