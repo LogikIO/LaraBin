@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('twitter/new', ['as' => 'twitter.new', 'uses' => 'Admin\TwitterController@newTweet']);
         Route::post('twitter/new', ['uses' => 'Admin\TwitterController@newTweetPost']);
         Route::get('twitter/{tweet}/delete', ['as' => 'twitter.delete', 'uses' => 'Admin\TwitterController@delete']);
+        Route::post('twitter/tweet/{bin}', ['as' => 'twitter.tweet', 'uses' => 'Admin\TwitterController@tweetBin']);
     });
 
 });

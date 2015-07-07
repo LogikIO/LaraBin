@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\LaraBin\Models\Bins\Bin;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,5 +34,14 @@ class TwitterController extends Controller
     public function delete()
     {
 
+    }
+
+    public function tweetBin(Bin $bin)
+    {
+        $status = 'Bin: #laravel ' . $bin->url() . ' ' . $bin->title;
+        Twitter::postTweet(['status' => str_limit($status, 135), 'format' => 'json']);
+        session()->flash('success', 'Bin has successfully been tweeted!');
+
+        return redirect()->back();
     }
 }

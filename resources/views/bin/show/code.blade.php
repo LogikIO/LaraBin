@@ -63,5 +63,16 @@
             {{--<a href="#" class="list-group-item"><i class="fa fa-star-o"></i>Star<span class="badge">13</span></a>--}}
         </div>
     </div>
+
+    @if(auth()->check() && auth()->user()->admin())
+        <div class="col-xs-12 col-md-2">
+            <h5>Admin</h5>
+            <div class="bin-panel list-group">
+                {!! Form::open(['route' => ['admin.twitter.tweet', $bin->getRouteKey()]]) !!}
+                    <button type="submit" class="btn btn-block btn-info btn-xs"><i class="fa fa-twitter"></i> Tweet Bin</button>
+                {!! Form::close() !!}
+            </div>
+        </div>
+    @endif
 </div>
 @stop

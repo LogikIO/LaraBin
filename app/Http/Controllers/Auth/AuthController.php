@@ -34,33 +34,24 @@ class AuthController extends Controller
         ];
 
         // check if user is authentic
-        $valid = auth()->validate($credentials);
+        if (auth()->attempt($credentials, $remember)) {
+            // check if email has been verified
+            if (!auth()->user()->verified()) {
+                auth()->logout();
+                session()->flash('error', 'You must verify your email before you can access the site. ' .
+                    '<br>If you have not received the confirmation email check your spam folder. ' .
+                    '<b><a class="alert-link" href="' . route('resend.email') . '" class="alert-link">Click here</a></b> for the option to resend.');
 
-        if (!$valid) {
-            session()->flash('error', 'Your [Username/Email] and/or Password is incorrect!');
+                return redirect()->route('home');
+            }
+            event(new UserHasLoggedIn(auth()->user()));
+            session()->flash('success', 'Successfully logged in!');
 
-            return redirect()->back()->withInput();
+            return redirect()->intended(route('home'));
         }
+        session()->flash('error', 'Your [Username/Email] and/or Password is incorrect!');
 
-        // user is valid, lets check a few things
-        $user = User::where($field, '=', $useremail)->first();
-
-        // check if email has been verified
-        if (!$user->verified()) {
-
-            session()->flash('error', 'You must verify your email before you can access the site. ' .
-                '<br>If you have not received the confirmation email check your spam folder. ' .
-                '<b><a class="alert-link" href="' . route('resend.email') . '" class="alert-link">Click here</a></b> for the option to resend.');
-
-            return redirect()->route('home');
-
-        }
-
-        auth()->login($user, $remember);
-        event(new UserHasLoggedIn($user));
-        session()->flash('success', 'Successfully logged in!');
-
-        return redirect()->intended(route('home'));
+        return redirect()->back()->withInput();
     }
 
     public function logout()
