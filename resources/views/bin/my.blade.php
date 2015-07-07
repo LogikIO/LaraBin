@@ -38,7 +38,36 @@ $('.visibility').on('change', function(){
         .fail(function(e){
             $.bootstrapGrowl(e.responseJSON.msg, {
                 type: 'danger',
-                offset: {from: 'top', amount: 80},
+                width: 'auto',
+                delay: 2000,
+                allow_dismiss: true
+            });
+        });
+});
+$('.hash').click(function() {
+    var id = $(this).data('id');
+    $.post('{{ route('bins.ajax') }}', { type: 'hash', id: id})
+        .done(function(e){
+            $.bootstrapGrowl(e.msg, {
+                type: 'success',
+                width: 'auto',
+                delay: 2000,
+                allow_dismiss: true
+            });
+            if(e.status == 'enabled') {
+                $('#share-button-'+id).text('Disable Sharing');
+                $('#share-'+id+' input').val(e.url);
+                $('#share-'+id).show();
+            } else {
+                // disabled
+                $('#share-button-'+id).text('Share');
+                $('#share-'+id).hide();
+
+            }
+        })
+        .fail(function(e){
+            $.bootstrapGrowl(e.responseJSON.msg, {
+                type: 'danger',
                 width: 'auto',
                 delay: 2000,
                 allow_dismiss: true
@@ -52,13 +81,28 @@ $('.visibility').on('change', function(){
     <div class="col-xs-12">
         @if($bins->count())
             @foreach($bins as $bin)
-                <div id="{{ hashid()->encode($bin->id) }}" data-title="{{ $bin->title }}" class="bin-details panel panel-default">
+                <div id="{{ $bin->getRouteKey() }}" data-title="{{ $bin->title }}" class="bin-details panel panel-default">
                     <div class="panel-heading">
-                        {!! Form::select('visibility', binVisibility(), $bin->visibility, ['class' => 'form-control input-sm visibility', 'data-id' => hashid()->encode($bin->id)]) !!}<small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                        {!! Form::select('visibility', binVisibility(), $bin->visibility, ['class' => 'form-control input-sm visibility', 'data-id' => $bin->getRouteKey()]) !!}<small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                        @if($bin->isPrivate())
+                            @if(!$bin->isShared())
+                            <span style="float:right;"><button id="share-button-{{ $bin->getRouteKey() }}" class="hash btn btn-xs btn-warning" data-id="{{ $bin->getRouteKey() }}">Share</button></span>
+                            @else
+                                <span style="float:right;"><button id="share-button-{{ $bin->getRouteKey() }}" class="hash btn btn-xs btn-warning" data-id="{{ $bin->getRouteKey() }}">Disable Sharing</button></span>
+                            @endif
+                        @endif
                     </div>
                     @if($bin->description)
                         <div class="panel-body">
                             {{ $bin->description }}
+                            @if($bin->isPrivate())
+                                <div id="share-{{ $bin->getRouteKey() }}" class="alert alert-info m-t-10 m-b-0" style="{{ (!$bin->isShared()) ? 'display:none;' : '' }}">
+                                    <p class="m-0">
+                                        <h5 class="m-t-0">Share URL:</h5>
+                                        <input type="text" class="m-t-10 form-control" disabled="" value="{{ $bin->shareUrl() }}" />
+                                    </p>
+                                </div>
+                            @endif
                         </div>
                     @endif
                     <div class="panel-footer">

@@ -237,6 +237,27 @@ class BinController extends Controller
             return response()->json(['msg' => 'Bin updated successfully!'], 200);
         }
 
+        if ($type == 'hash') {
+            // make sure bin is private, if not, then hash isn't needed
+            if ($record->isPrivate()) {
+                // Bin has private hash, request is to delete
+                if ($record->isShared()) {
+                    $record->private_hash = null;
+                    $record->save();
+
+                    return response()->json(['msg' => 'Bin sharing has been disabled!', 'status' => 'disabled'], 200);
+                } else {
+                    // No private hash exists, create one
+                    $record->private_hash = str_random(30);
+                    $record->save();
+
+                    return response()->json(['msg' => 'Bin sharing enabled!', 'status' => 'enabled', 'url' => $record->shareUrl()], 200);
+                }
+            }
+
+            return response()->json(['msg' => 'Bin is not private! No need for share url!'], 400);
+        }
+
     }
 
     public function delete(Bin $bin)

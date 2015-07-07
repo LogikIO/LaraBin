@@ -25,7 +25,7 @@ class CanViewBin
         }
 
         if ($bin->isPrivate()) {
-            if (!static::canViewPrivateBin($bin)) {
+            if (!static::canViewPrivateBin($bin, $request)) {
                 session()->flash('error', 'You do not have permission to view this bin!');
 
                 return redirect()->route('home');
@@ -35,7 +35,7 @@ class CanViewBin
         return $next($request);
     }
 
-    private static function canViewPrivateBin(Bin $bin)
+    private static function canViewPrivateBin(Bin $bin, $request)
     {
         // Check if user is admin
         if (auth()->check() && auth()->user()->admin()) {
@@ -45,6 +45,14 @@ class CanViewBin
         // Check if user is bin owner
         if (auth()->check() && auth()->user()->getAuthIdentifier() == $bin->user_id) {
             return true;
+        }
+
+        // Check if user has a hash key for bin
+        $hash = $request->route('hash');
+        if ($hash) {
+            if ($bin->private_hash == $hash) {
+                return true;
+            }
         }
 
         return false;

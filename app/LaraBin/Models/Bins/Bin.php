@@ -54,6 +54,11 @@ class Bin extends Model
         return route('bin.code', $this->getRouteKey());
     }
 
+    public function shareUrl()
+    {
+        return route('bin.private', [$this->getRouteKey(), $this->private_hash]);
+    }
+
     public function commentsUrl()
     {
         return route('bin.comments', $this->getRouteKey());
@@ -68,6 +73,11 @@ class Bin extends Model
     public function isPrivate()
     {
         return ($this->visibility == 0) ? true : false;
+    }
+
+    public function isShared()
+    {
+        return ($this->private_hash) ? true : false;
     }
 
     public function isPublic()

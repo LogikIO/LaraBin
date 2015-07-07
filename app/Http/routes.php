@@ -60,6 +60,7 @@ Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
 Route::get('bins/recent/{version?}', ['as' => 'bins.recent', 'uses' => 'Bins\BinController@allRecent']);
 Route::get('bins/{version?}', ['as' => 'bins.all', 'uses' => 'Bins\BinController@all']);
 Route::get('{bin}', ['as' => 'bin.code', 'uses' => 'Bins\BinController@show', 'middleware' => 'bin.view']);
+Route::get('{bin}/private/{hash}', ['as' => 'bin.private', 'uses' => 'Bins\BinController@show', 'middleware' => 'bin.view']);
 Route::get('{bin}/comments', ['as' => 'bin.comments', 'uses' => 'Bins\CommentController@comments', 'middleware' => 'bin.view']);
 Route::post('{bin}/comments', ['uses' => 'Bins\CommentController@newComment', 'middleware' => ['auth', 'bin.view']]);
 Route::get('{bin}/comments/{comment}/edit', ['as' => 'bin.comments.edit', 'uses' => 'Bins\CommentController@edit', 'middleware' => ['auth', 'bin.view', 'comment.manage']]);
