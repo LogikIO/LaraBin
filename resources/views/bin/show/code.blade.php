@@ -38,12 +38,6 @@
 <div class="row">
     <div class="col-xs-12 col-md-10">
 
-        @if($bin->isPrivate() && $bin->isShared())
-            @if(auth()->check() && auth()->user()->getAuthIdentifier() !== $bin->user_id || auth()->guest())
-                <div class="alert alert-info">Comments not available for private bins!</div>
-            @endif
-        @endif
-
         @include('bin.show.partials.details')
 
         @if(Menu::areActiveRoutesCheck(['bin.code', 'bin.private']))

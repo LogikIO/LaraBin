@@ -47,11 +47,23 @@ class CanViewBin
             return true;
         }
 
-        // Check if user has a hash key for bin
-        $hash = $request->route('hash');
-        if ($hash) {
-            if ($bin->private_hash == $hash) {
+        if ($bin->isShared()) {
+            if (session()->get('private-' . $bin->getRouteKey()) == $bin->private_hash) {
                 return true;
+            }
+
+            // Check if user has a hash key for bin
+            $hash = $request->route('hash');
+            if ($hash) {
+                if ($bin->private_hash == $hash) {
+                    if (!session()->has('private-' . $bin->getRouteKey()) ||
+                        session()->get('private-' . $bin->getRouteKey()) !== $bin->private_hash
+                    ) {
+                        session(['private-' . $bin->getRouteKey() => $bin->private_hash]);
+                    }
+
+                    return true;
+                }
             }
         }
 
