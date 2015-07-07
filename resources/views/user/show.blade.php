@@ -87,6 +87,9 @@
                         <div class="bin-details panel panel-default">
                             <div class="panel-heading">
                                 <small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                                @if($bin->tweeted())
+                                    <span style="float:right;"><i title="Has been tweeted!" class="fa fa-twitter"></i></span>
+                                @endif
                             </div>
                             @if($bin->description)
                                 <div class="panel-body" style="padding:15px;">

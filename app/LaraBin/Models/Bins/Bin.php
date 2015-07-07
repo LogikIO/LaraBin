@@ -64,6 +64,11 @@ class Bin extends Model
         return route('bin.comments', $this->getRouteKey());
     }
 
+    public function tweeted()
+    {
+        return ($this->tweeted) ? true : false;
+    }
+
     /**
      * Check if a bin is private
      * 0 = private, 1 = public, 2 = unlisted but public

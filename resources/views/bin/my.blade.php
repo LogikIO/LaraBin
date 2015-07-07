@@ -84,6 +84,9 @@ $('.hash').click(function() {
                 <div id="{{ $bin->getRouteKey() }}" data-title="{{ $bin->title }}" class="bin-details panel panel-default">
                     <div class="panel-heading">
                         {!! Form::select('visibility', binVisibility(), $bin->visibility, ['class' => 'form-control input-sm visibility', 'data-id' => $bin->getRouteKey()]) !!}<small>{!! $bin->versions_label() !!}</small><a href="{{ $bin->url() }}">{{ $bin->title }}</a>
+                        @if($bin->tweeted())
+                            <span class="m-l-5" style="float:right;"><i title="Has been tweeted!" class="fa fa-twitter"></i></span>
+                        @endif
                         @if($bin->isPrivate())
                             @if(!$bin->isShared())
                             <span style="float:right;"><button id="share-button-{{ $bin->getRouteKey() }}" class="hash btn btn-xs btn-warning" data-id="{{ $bin->getRouteKey() }}">Share</button></span>

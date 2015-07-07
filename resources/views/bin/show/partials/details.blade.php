@@ -2,6 +2,9 @@
     <div class="panel-heading">
         <small>{!! $bin->label() !!}{!! $bin->versions_label() !!}</small>
         <a href="{{ $bin->user->url() }}">{{ $bin->user->username }}</a>&nbsp;&nbsp;/&nbsp;&nbsp;{{ $bin->title }}
+        @if($bin->tweeted())
+            <span style="float:right;"><i title="Has been tweeted!" class="fa fa-twitter"></i></span>
+        @endif
     </div>
     @if($bin->description)
         <div class="panel-body" style="padding:15px;">
