@@ -36,6 +36,8 @@ class BinController extends Controller
         if ($bin->isPublic()) {
             $status = 'Bin: #laravel ' . $bin->url() . ' ' . $bin->title;
             Twitter::postTweet(['status' => str_limit($status, 135), 'format' => 'json']);
+            $bin->tweeted = true;
+            $bin->save();
         }
 
         $bin->versions()->sync($request->input('versions'));
