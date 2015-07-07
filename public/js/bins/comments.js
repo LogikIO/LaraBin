@@ -3,7 +3,7 @@ $comment = $('#comment');
 tabOverride.set(document.getElementById('comment'));
 tabOverride.tabSize(4);
 tabOverride.autoIndent(false);
-$('form').submit(function(e){
+$comment.submit(function(e){
     if ($.trim($comment.val()) == '') {
         e.preventDefault();
         processError('Comment cannot be blank!');
