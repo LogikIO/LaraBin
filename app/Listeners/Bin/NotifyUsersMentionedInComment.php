@@ -32,8 +32,10 @@ class NotifyUsersMentionedInComment
 
         // Grab all mentioned users - @username
         preg_match_all("/@([A-Za-z0-9_]+)/", $comment->message, $output_array);
-        // Get users without the @ sign
-        $foundUsers = $output_array[1];
+        // Get users without the @ sign - send once per user
+        // in case a user is mentioned twice
+        $foundUsers = array_unique($output_array[1]);
+
         if (!empty($foundUsers)) {
             $users = User::whereIn('username', $foundUsers)->get();
             if ($users->count()) {
