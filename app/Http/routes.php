@@ -58,15 +58,6 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('login/reset/confirm/{token}', ['uses' => 'Auth\AuthController@confirmPost']);
 
 });
-get('test', function() {
-    $user = new App\LaraBin\Helpers\UserCache();
-   dd($user->users());
-});
-
-get('test2', function() {
-    $user = new App\LaraBin\Helpers\UserCache();
-    dd($user->usernames());
-});
 
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
 
