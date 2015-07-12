@@ -16,7 +16,7 @@ class EloquentEventServiceProvider extends ServiceProvider
     public function boot()
     {
         // User model
-        $userCache = app('App\Larabin\Helpers\UserCache');
+        $userCache = new UserCache();
         User::created(function ($user) use ($userCache) {
             $userCache->update($user);
         });
