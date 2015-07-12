@@ -11,7 +11,7 @@
 <p>We have manually activated your account. You may now login.</p>
 <p><a href="{{ route('login') }}">larabin.com/login</a></p>
 <br>
-<p>Sorry for the inconvenience!</p>
+<p>Enjoy!</p>
 <br>
 <br>
 <p>LaraBin.com</p>
