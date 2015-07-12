@@ -40,6 +40,8 @@ class TwitterController extends Controller
     {
         $status = 'Bin: #laravel ' . $bin->url() . ' ' . $bin->title;
         Twitter::postTweet(['status' => str_limit($status, 135), 'format' => 'json']);
+        $bin->tweeted = true;
+        $bin->save();
         session()->flash('success', 'Bin has successfully been tweeted!');
 
         return redirect()->back();
