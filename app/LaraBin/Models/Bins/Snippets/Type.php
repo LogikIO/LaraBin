@@ -12,6 +12,6 @@ class Type extends Model
 
     public function snippets()
     {
-        return $this->hasMany('\App\LaraBin\Models\Bins\Snippets\Snippet', 'type_id', 'id');
+        return $this->hasMany(Snippet::class, 'type_id', 'id');
     }
 }

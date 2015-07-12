@@ -2,6 +2,9 @@
 
 namespace App\LaraBin\Models\Bins;
 
+use App\LaraBin\Models\Bins\Comments\Comment;
+use App\LaraBin\Models\Bins\Snippets\Snippet;
+use App\LaraBin\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Bin extends Model
@@ -14,22 +17,22 @@ class Bin extends Model
 
     public function user()
     {
-        return $this->belongsTo('\App\LaraBin\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function snippets()
     {
-        return $this->hasMany('\App\LaraBin\Models\Bins\Snippets\Snippet');
+        return $this->hasMany(Snippet::class);
     }
 
     public function versions()
     {
-        return $this->belongsToMany('\App\LaraBin\Models\Bins\Version')->orderBy('name');
+        return $this->belongsToMany(Version::class)->orderBy('name');
     }
 
     public function comments()
     {
-        return $this->hasMany('\App\LaraBin\Models\Bins\Comments\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     // Methods

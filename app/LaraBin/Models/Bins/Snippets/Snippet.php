@@ -2,6 +2,7 @@
 
 namespace App\LaraBin\Models\Bins\Snippets;
 
+use App\LaraBin\Models\Bins\Bin;
 use Illuminate\Database\Eloquent\Model;
 
 class Snippet extends Model
@@ -16,12 +17,12 @@ class Snippet extends Model
 
     public function bin()
     {
-        return $this->belongsTo('\App\LaraBin\Models\Bins\Bin');
+        return $this->belongsTo(Bin::class);
     }
 
     public function type()
     {
-        return $this->belongsTo('\App\LaraBin\Models\Bins\Snippets\Type');
+        return $this->belongsTo(Type::class);
     }
 
     public function label()

@@ -2,6 +2,8 @@
 
 namespace App\LaraBin\Models\Bins\Comments;
 
+use App\LaraBin\Models\Bins\Bin;
+use App\LaraBin\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -16,12 +18,12 @@ class Comment extends Model
 
     public function bin()
     {
-        return $this->belongsTo('\App\LaraBin\Models\Bins\Bin');
+        return $this->belongsTo(Bin::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('\App\LaraBin\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     // Methods

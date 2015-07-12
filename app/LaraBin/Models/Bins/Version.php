@@ -14,6 +14,6 @@ class Version extends Model
 
     public function bins()
     {
-        return $this->belongsToMany('\App\LaraBin\Models\Bins\Bin');
+        return $this->belongsToMany(Bin::class);
     }
 }

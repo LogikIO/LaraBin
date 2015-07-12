@@ -2,6 +2,7 @@
 
 namespace App\LaraBin\Models\Auth;
 
+use App\LaraBin\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
@@ -17,7 +18,7 @@ class PasswordReset extends Model
 
     public function user()
     {
-        return $this->belongsTo('\App\LaraBin\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     // Methods
