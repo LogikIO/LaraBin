@@ -20,7 +20,7 @@ class UserController extends Controller
         $query = $request->input('q');
         $users = $this->userCache->usernames();
         $found = array_filter($users, function($users) use ($query) {
-            return ( strpos($users, $query) !== false );
+            return ( stripos($users, $query) !== false );
         });
         $usernames = array_values($found);
 
