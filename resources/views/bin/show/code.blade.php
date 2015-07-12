@@ -11,6 +11,7 @@
     {!! HTML::style('css/bins/show.css') !!}
     @if(Menu::areActiveRoutesCheck(['bin.comments', 'bin.comments.edit']))
         {!! HTML::style('css/bins/comments.css') !!}
+        {!! HTML::style('vendors/atwho/jquery.atwho.css') !!}
     @endif
     {!! HTML::style('css/bootstrap-social.css') !!}
 @stop
@@ -22,6 +23,8 @@
 @section('customjsfiles')
     @if(Menu::areActiveRoutesCheck(['bin.comments', 'bin.comments.edit']))
         {!! HTML::script('vendors/taboverride/taboverride.min.js') !!}
+        {!! HTML::script('vendors/atwho/jquery.caret.min.js') !!}
+        {!! HTML::script('vendors/atwho/jquery.atwho.min.js') !!}
         {!! HTML::script('js/bins/comments.js') !!}
     @endif
     {!! HTML::script('vendors/highlightjs/highlight.pack.js') !!}

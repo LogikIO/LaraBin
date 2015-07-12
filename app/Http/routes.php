@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('twitter/tweet/{bin}', ['as' => 'twitter.tweet', 'uses' => 'Admin\TwitterController@tweetBin']);
     });
 
+    Route::group(['prefix' => 'api', 'as' => 'api.'], function() {
+        Route::get('users', ['as' => 'users', 'uses' => 'Api\UserController@search']);
+    });
+
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -53,6 +57,15 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('login/reset/confirm/{token}', ['as' => 'reset.confirm', 'uses' => 'Auth\AuthController@confirm']);
     Route::post('login/reset/confirm/{token}', ['uses' => 'Auth\AuthController@confirmPost']);
 
+});
+get('test', function() {
+    $user = new App\LaraBin\Helpers\UserCache();
+   dd($user->users());
+});
+
+get('test2', function() {
+    $user = new App\LaraBin\Helpers\UserCache();
+    dd($user->usernames());
 });
 
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);

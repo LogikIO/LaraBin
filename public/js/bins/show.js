@@ -34,3 +34,17 @@ $('#tweet-bin-button').click(function() {
         }
     });
 });
+
+$('#comment').atwho({
+    at: "@",
+    limit: 5,
+    callbacks: {
+        remoteFilter: function(t, e) {
+            t.length <= 2 || $.getJSON("/api/users", {
+                q: t
+            }, function(t) {
+                e(t)
+            })
+        }
+    }
+});

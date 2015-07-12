@@ -155,6 +155,7 @@ return [
         Thujohn\Twitter\TwitterServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
+        App\Providers\EloquentEventServiceProvider::class,
 
     ],
 

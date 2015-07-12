@@ -2,6 +2,7 @@
 
 namespace App\LaraBin\Services\Markdown;
 
+use App\LaraBin\Helpers\UserCache;
 use App\LaraBin\Models\User;
 use League\CommonMark\ContextInterface;
 use League\CommonMark\Inline\Element\Link;
@@ -48,15 +49,34 @@ class MentionParser extends AbstractInlineParser
             return false;
         }
 
-        $user = User::where('username', $handle)->count();
-        if (!$user) {
+        $userCache = new UserCache();
+        $usernames = $userCache->usernames();
+        $found = in_array($handle, $usernames, true);
+
+        if (!$found) {
             $cursor->restoreState($previousState);
 
             return false;
         }
 
-        $inlineContext->getInlines()->add(new Link(route('user', $handle), '@' . $handle));
+        $users = $userCache->users();
+        $userKey = $this->searchArray($users, $handle);
+        $user = $users[$userKey];
+        $url = $user['url'];
+
+        $inlineContext->getInlines()->add(new Link($url, '@' . $handle));
 
         return true;
+    }
+
+    private function searchArray($users, $handle)
+    {
+        foreach($users as $key => $user) {
+            if($user['username'] === $handle) {
+                return $key;
+            }
+        }
+
+        return null;
     }
 }

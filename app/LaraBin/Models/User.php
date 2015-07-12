@@ -3,6 +3,11 @@
 namespace App\LaraBin\Models;
 
 use App\LaraBin\Helpers\Settings;
+use App\LaraBin\Models\Auth\EmailVerification;
+use App\LaraBin\Models\Auth\PasswordReset;
+use App\LaraBin\Models\Bins\Bin;
+use App\LaraBin\Models\Bins\Comments\Comment;
+use App\LaraBin\Models\Bins\Snippets\Snippet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -26,32 +31,32 @@ class User extends Model implements AuthenticatableContract
     protected $dates = ['last_login'];
 
     protected $casts = [
-        'settings' => 'array'
+        'settings' => 'json'
     ];
 
     public function passwordReset()
     {
-        return $this->hasOne('\App\LaraBin\Models\Auth\PasswordReset');
+        return $this->hasOne(PasswordReset::class);
     }
 
     public function emailVerification()
     {
-        return $this->hasOne('\App\LaraBin\Models\Auth\EmailVerification');
+        return $this->hasOne(EmailVerification::class);
     }
 
     public function bins()
     {
-        return $this->hasMany('\App\LaraBin\Models\Bins\Bin');
+        return $this->hasMany(Bin::class);
     }
 
     public function snippets()
     {
-        return $this->hasManyThrough('\App\LaraBin\Models\Bins\Snippets\Snippet', '\App\LaraBin\Models\Bins\Bin');
+        return $this->hasManyThrough(Snippet::class, Bin::class);
     }
 
     public function comments()
     {
-        return $this->hasMany('\App\LaraBin\Models\Bins\Comments\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     // Methods
