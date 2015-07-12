@@ -66,6 +66,22 @@ class AppMailer
         $this->deliver();
     }
 
+    /**
+     * Send email notification to let user know they have been mentioned in comment
+     *
+     * @param Comment $comment - The comment in question
+     * @param User $user - The user who has been mentioned
+     */
+    public function sendMentionNotificationTo(Comment $comment, User $user)
+    {
+        $this->to = $user->email;
+        $this->view = 'emails.bin.new-mention';
+        $this->subject = 'LaraBin.com - You have been mentioned in a comment!';
+        $this->data = ['comment' => $comment];
+
+        $this->deliver();
+    }
+
     public function deliver()
     {
         $this->mailer->send($this->view, $this->data, function($message) {

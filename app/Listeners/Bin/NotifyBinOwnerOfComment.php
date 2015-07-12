@@ -29,7 +29,9 @@ class NotifyBinOwnerOfComment
     {
         $comment = $event->comment;
 
-        $this->mailer->sendCommentNotificationTo($comment);
+        if ($comment->bin->user_id !== auth()->user()->getAuthIdentifier()) {
+            $this->mailer->sendCommentNotificationTo($comment);
+        }
 
     }
 }

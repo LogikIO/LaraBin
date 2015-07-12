@@ -6,6 +6,7 @@ use App\Events\UserHasLoggedIn;
 use App\Events\Bin\UserCommentedOnBin;
 use App\Listeners\UpdateLastLogInTime;
 use App\Listeners\Bin\NotifyBinOwnerOfComment;
+use App\Listeners\Bin\NotifyUsersMentionedInComment;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -21,7 +22,8 @@ class EventServiceProvider extends ServiceProvider
             UpdateLastLogInTime::class
         ],
         UserCommentedOnBin::class => [
-            NotifyBinOwnerOfComment::class
+            NotifyBinOwnerOfComment::class,
+            NotifyUsersMentionedInComment::class
         ]
     ];
 

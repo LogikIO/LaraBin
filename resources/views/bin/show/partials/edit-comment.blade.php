@@ -11,7 +11,7 @@
                             @if ($errors->has('message'))
                                 <span class="help-block">{{ $errors->first('message') }}</span>
                             @endif
-                            <span class="help-block">Markdown supported. User tagging supported ( @username ) <small>[ still working on notifying user they were tagged ]</small></span>
+                            <span class="help-block">Markdown supported. User tagging supported ( @username )</span>
                         </div>
                     </div>
                 </div>

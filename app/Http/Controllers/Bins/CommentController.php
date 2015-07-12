@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Bins;
 use App\Events\Bin\UserCommentedOnBin;
 use App\LaraBin\Models\Bins\Bin;
 use App\LaraBin\Models\Bins\Comments\Comment;
+use App\LaraBin\Models\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,9 +26,8 @@ class CommentController extends Controller
            'user_id' => auth()->user()->getAuthIdentifier(),
             'message' => $request->input('message')
         ]);
-        if ($bin->user_id !== auth()->user()->getAuthIdentifier()) {
-            event(new UserCommentedOnBin($comment));
-        }
+
+        event(new UserCommentedOnBin($comment));
 
         session()->flash('success', 'Success! Comment added!');
 
