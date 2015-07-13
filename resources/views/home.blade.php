@@ -50,7 +50,7 @@
         <p>LaraBin is a code snippet repository specifically dedicated to <a href="http://laravel.com">Laravel</a> code.</p>
         <p>Create an account and paste away! :)</p>
         <p><a class="btn btn-sm btn-social btn-twitter" href="https://twitter.com/larabincom"><i class="fa fa-twitter"></i>Follow us on Twitter!</a><br>
-        <small>(New <strong>Public</strong> bins are posted instantly!)</small></p>
+        <small>(New <strong>Public</strong> bins are tweeted instantly!)</small></p>
     </div>
 
     <div class="col-xs-8 col-xs-offset-2" style="margin-top:20px;">
