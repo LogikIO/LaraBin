@@ -59,6 +59,10 @@ Route::group(['middleware' => 'guest'], function () {
 
 });
 
+get('id/{id}', function($id) {
+    return hashid()->encode($id);
+});
+
 Route::get('@{username}', ['as' => 'user', 'uses' => 'UserController@show']);
 
 Route::get('bins/recent/{version?}', ['as' => 'bins.recent', 'uses' => 'Bins\BinController@allRecent']);
