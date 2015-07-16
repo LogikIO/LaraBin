@@ -3,8 +3,6 @@
     <title>LaraBin :: {{ $snippet->bin->title }}</title>
   </head>
   <body>
-    <pre>
-      <code>{{ $snippet->code }}</code>
-    </pre>
+    <pre><code>{{ $snippet->code }}</code></pre>
   </body>
 </html>
